@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{%- import "_macros.html" as m with context -%}
+{% block title %}Member portal (preview) | {{ SITENAME }}{% endblock %}
+{% block description %}{{ page.summary|striptags }}{% endblock %}
+{% block body_class %}page-portal{% endblock %}
+
+{% block hero %}
+{{ m.preview_notice("Sign-in and registration aren’t available yet. These forms show the planned design and don’t send anything.") }}
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="portal-head">
+      <p class="eyebrow">Member portal</p>
+      <h1>Sign in or create your free account</h1>
+      <p class="pill-note">{{ m.icon('check', 16) }} Registration is free and open to everyone — students, researchers, clinicians and industry.</p>
+    </div>
+    <div class="portal-grid">
+      <form class="card form-card" data-preview-form aria-labelledby="signin-title">
+        <h2 id="signin-title">Sign in</h2>
+        <p class="muted">Already a member? Welcome back.</p>
+        <div class="field"><label for="si-email">Email</label><input class="input" id="si-email" name="email" type="email" placeholder="you@institution.edu" autocomplete="username"></div>
+        <div class="field">
+          <div class="label-row"><label for="si-password">Password</label>{{ m.text_link('Forgot password?', None) }}</div>
+          <input class="input" id="si-password" name="password" type="password" autocomplete="current-password">
+        </div>
+        <label class="checkbox"><input type="checkbox" name="remember"> Keep me signed in</label>
+        <button class="btn btn--primary btn--block" type="submit">Sign in</button>
+        <p class="or" aria-hidden="true"><span>or</span></p>
+        <button class="btn btn--outline btn--block" type="submit" name="sso" value="1">Sign in with institutional login <span class="placeholder">[SSO, optional]</span></button>
+        {{ m.form_status() }}
+      </form>
+
+      <form class="card form-card" data-preview-form aria-labelledby="register-title">
+        <h2 id="register-title">Register</h2>
+        <p class="muted">New to VETNET? It takes a minute and costs nothing.</p>
+        <div class="field-row">
+          <div class="field"><label for="rg-first">First name</label><input class="input" id="rg-first" name="first_name" type="text" autocomplete="given-name"></div>
+          <div class="field"><label for="rg-last">Last name</label><input class="input" id="rg-last" name="last_name" type="text" autocomplete="family-name"></div>
+        </div>
+        <div class="field"><label for="rg-email">Email</label><input class="input" id="rg-email" name="email" type="email" placeholder="you@institution.edu" autocomplete="email"></div>
+        <div class="field-row">
+          <div class="field"><label for="rg-org">Institution / company</label><input class="input" id="rg-org" name="org" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="rg-role">I am a…</label>
+            <select class="select" id="rg-role" name="role">
+              <option value="">Select one</option>
+              {% for r in ['Undergraduate', 'Graduate student', 'Postdoc', 'Faculty', 'Clinician', 'Industry researcher', 'Other'] %}<option>{{ r }}</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="rg-password">Password</label><input class="input" id="rg-password" name="password" type="password" autocomplete="new-password"></div>
+        <label class="checkbox"><input type="checkbox" name="agree"> <span>I agree to the {{ m.text_link('data use terms', None, 'placeholder') }} and <a href="{{ SITEURL }}/privacy/">privacy policy</a>.</span></label>
+        <p class="notice notice--inline">{{ m.icon('mail', 16) }} New members are added to the VETNET e-list automatically. You can unsubscribe anytime.</p>
+        <button class="btn btn--primary btn--block" type="submit">Create free account</button>
+        {{ m.form_status() }}
+      </form>
+    </div>
+    <ul class="grid-3 benefit-tiles">
+      <li class="card benefit">{{ m.icon('database', 20) }}<span>Request access to restricted datasets</span></li>
+      <li class="card benefit">{{ m.icon('users', 20) }}<span>Join working groups and members-only spaces</span></li>
+      <li class="card benefit">{{ m.icon('chat', 20) }}<span>Get early news on datasets and competitions</span></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

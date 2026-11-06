@@ -1,0 +1,40 @@
+{%- if page is defined -%}
+  {%- set current_slug = page.slug -%}
+{%- else -%}
+  {%- set current_slug = 'news' -%}
+{%- endif -%}
+<!doctype html>
+<html lang="{{ DEFAULT_LANG }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  {%- set description %}{% block description %}{{ SITESUBTITLE }}{% endblock %}{% endset %}
+  <meta name="description" content="{{ description|striptags|trim }}">
+  <meta property="og:site_name" content="{{ SITENAME }}">
+  <meta property="og:title" content="{{ self.title()|trim }}">
+  <meta property="og:description" content="{{ description|striptags|trim }}">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  {%- if current_slug in ['portal', 'members'] %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+  <link rel="icon" type="image/svg+xml" href="{{ SITEURL }}/favicon.svg">
+  <link rel="preload" href="{{ SITEURL }}/theme/fonts/public-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ SITEURL }}/theme/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/tokens.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/base.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/components.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pages.css">
+  <script>document.documentElement.className = "js";</script>
+  <script src="{{ SITEURL }}/theme/js/site.js" defer></script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "_header.html" %}
+  <main id="main">
+    {% block hero %}{% endblock %}
+    {% block content %}{% endblock %}
+  </main>
+  {% include "_footer.html" %}
+</body>
+</html>

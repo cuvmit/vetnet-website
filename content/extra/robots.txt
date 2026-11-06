@@ -1,0 +1,5 @@
+# Update the domain below to match SITEURL in publishconf.py.
+User-agent: *
+Allow: /
+
+Sitemap: https://vetnet.org/sitemap.xml

@@ -1,0 +1,5 @@
+# Working groups. focus: one line. leaders: names that must exist in people.yml.
+- {id: mvp, name: MVP team, focus: null, leaders: []}
+- {id: repos, name: Repos team, focus: null, leaders: []}
+- {id: governance, name: Governance team, focus: null, leaders: []}
+- {id: stakeholder, name: Stakeholder team, focus: null, leaders: []}

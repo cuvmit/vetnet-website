@@ -1,0 +1,18 @@
+# Answers may contain HTML links and the tokens @SITEURL@, @COLLABORATORS@, @ORGANIZATIONS@, @WHITEPAPER@.
+# actions: each is {label, link|contact (a key under site.links or site.contact) or url, style}
+- question: How can I get in touch with VETNET about publicity, media or collaborations?
+  answer: "We'd love to hear from you. Email the VETNET team or use the contact form, and the right member of the team will get back to you."
+  email_placeholder: "[contact email to be confirmed]"
+  actions:
+    - {label: Contact us, contact: general, style: primary}
+- question: How can I stay up to date on what's happening at VETNET?
+  answer: "Subscribe to our news updates, or follow VETNET on LinkedIn for announcements, events and new datasets."
+  actions:
+    - {label: Subscribe to news, url: "#e-list", style: primary}
+    - {label: Follow on LinkedIn, link: linkedin, style: outline}
+- question: How can I get more involved with VETNET?
+  answer: "Check out our <a href=\"@SITEURL@/join/\">Opportunities page</a> to join a working group, download data or contribute data of your own."
+  actions: []
+- question: What has VETNET accomplished so far?
+  answer: "We launched at the June 2026 Cornell Thought Summit, built a community of @COLLABORATORS@ collaborators from @ORGANIZATIONS@ organizations, and published our founding whitepaper, <a href=\"@WHITEPAPER@\">“VETNET: Assembling Benchmark Datasets for AI-Driven Veterinary Innovation”</a> (arXiv, 2026)."
+  actions: []

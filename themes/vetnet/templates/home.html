@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{%- import "_macros.html" as m with context -%}
+{% set stats = data.stats %}
+{% block title %}VETNET | Open data for veterinary AI{% endblock %}
+{% block description %}{{ page.summary|striptags }}{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
+{% block hero %}
+{% set featured = articles|selectattr('featured', 'defined')|sort(attribute='featured')|list %}
+<section class="hero hero--home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Veterinary medicine × data science</p>
+      <h1>Shared data to move veterinary AI forward</h1>
+      <p class="hero-lead">VETNET is building an ecosystem of live benchmarks for AI in veterinary medicine — <em>any animal, any disease, any task</em>. Launched at a 2026 Cornell Thought Summit, it unites universities, industry and regulators to create open, well-documented datasets, starting with CT and radiograph imaging.</p>
+      <div class="btn-row">
+        <a class="btn btn--light" href="{{ SITEURL }}/about/">Learn more about VETNET {{ m.icon('arrow', 16) }}</a>
+        <a class="btn btn--ghost-light" href="{{ SITEURL }}/databases/">Browse datasets</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="{{ SITEURL }}/theme/img/hero.svg" alt="" width="520" height="420">
+      <p class="hero-art-note placeholder">[Hero photo — e.g., a clinician reviewing a canine CT scan. Static image.]</p>
+      {% set wp = data.publications[0] %}
+      <a class="hero-card" href="{{ SITEURL }}/{{ featured[0].url if featured else 'research/' }}">
+        <span class="hero-card-icon" aria-hidden="true">{{ m.icon('document', 20) }}</span>
+        <span>
+          <span class="hero-card-label">New whitepaper · arXiv:{{ wp.arxiv_id }}</span>
+          <span class="hero-card-title">{{ wp.title }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% set featured = articles|selectattr('featured', 'defined')|sort(attribute='featured')|list %}
+<section class="stats-wrap" aria-label="VETNET at a glance">
+  <div class="container">
+    <div class="stats card">
+      <ul class="stats-list">
+        <li><span class="stat-value">{{ stats.collaborators_total }}</span><span class="stat-label">Collaborators</span></li>
+        <li><span class="stat-value">{{ stats.universities }}</span><span class="stat-label">Partner universities</span></li>
+        <li><span class="stat-value">{{ stats.industry_other }}</span><span class="stat-label">Industry &amp; other partners</span></li>
+        <li><span class="stat-value">{{ stats.datasets if stats.datasets else '—' }}</span><span class="stat-label">Datasets{% if not stats.datasets %} · first release coming{% endif %}</span></li>
+        <li><span class="stat-value">{{ stats.publications }}</span><span class="stat-label">Publication{{ 's' if stats.publications != 1 }}{% if stats.citations is not none %} · {{ stats.citations }} citations{% endif %}</span></li>
+      </ul>
+      <p class="stats-note"><span class="dot" aria-hidden="true"></span>Live counts — these update automatically whenever the site is rebuilt from the people and partner lists.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="partners">
+  <div class="container">
+    <div class="partners-head">
+      <div class="section-head">
+        <p class="eyebrow">Collaborators</p>
+        <h2>{{ stats.organizations }} organizations, one shared goal</h2>
+        <p>Universities, companies, clinics and regulators from North America, Europe, Asia and Australia contribute data, expertise and research direction.</p>
+      </div>
+      <div class="segmented js-only" role="group" aria-label="Filter organizations" data-partner-filters>
+        <button type="button" data-filter="all" aria-pressed="true">All {{ stats.organizations }}</button>
+        <button type="button" data-filter="universities" aria-pressed="false">Universities <span class="count">{{ stats.partner_groups.universities }}</span></button>
+        <button type="button" data-filter="industry" aria-pressed="false">Industry <span class="count">{{ stats.partner_groups.industry }}</span></button>
+        <button type="button" data-filter="clinical" aria-pressed="false">Clinical &amp; public <span class="count">{{ stats.partner_groups.clinical }}</span></button>
+      </div>
+    </div>
+    <ul class="partner-grid" data-partner-grid>
+      {% for p in data.partners %}{{ m.partner_tile(p) }}{% endfor %}
+    </ul>
+    <div class="sponsor-strip card">
+      <p><span class="strip-label">Sponsored by</span>
+        <span class="logo-tile" aria-hidden="true">Logo</span>
+        <strong>Cornell AI Initiative</strong></p>
+      {{ m.action('Become a sponsor', SITEURL ~ '/sponsors/', 'outline') }}
+    </div>
+  </div>
+</section>
+
+<section class="section section--white section--bordered" id="news">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div><p class="eyebrow">News &amp; Events</p><h2>Featured news</h2></div>
+      <a class="link-arrow" href="{{ SITEURL }}/news/">View all news →</a>
+    </div>
+    {% if featured %}
+    <div class="news-grid">
+      {{ m.news_card(featured[0], lead=True) }}
+      <div class="news-side">
+        {% for a in featured[1:3] %}{{ m.news_card(a) }}{% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <p class="empty empty--plain">News is coming soon.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section" id="join">
+  <div class="container">
+    <div class="join-panel">
+      <div class="join-pitch">
+        <p class="eyebrow">Join us</p>
+        <h2>Join the VETNET community</h2>
+        <p>Whether you are just starting out or leading a lab or company, there’s a way to take part. Pick as many as you like — each one sends you its own next steps.</p>
+        <ul class="chips" aria-label="Who can join">
+          {% for who in ['Undergraduates', 'Graduate students', 'Postdocs', 'Faculty', 'Clinicians', 'Industry researchers'] %}
+          <li class="chip">{{ who }}</li>
+          {% endfor %}
+        </ul>
+        <ul class="link-cards">
+          <li>{% if data.site.links.survey %}<a href="{{ data.site.links.survey }}" rel="noopener">{% else %}<span class="is-disabled" aria-disabled="true" title="Coming soon">{% endif %}{{ m.icon('clipboard') }}<strong>Take the community survey</strong><span class="muted">~5 min →</span>{% if data.site.links.survey %}</a>{% else %}<span class="visually-hidden"> (coming soon)</span></span>{% endif %}</li>
+          <li><a href="{{ SITEURL }}/sponsors/">{{ m.icon('heart') }}<strong>Become a sponsor</strong><span class="muted">→</span></a></li>
+        </ul>
+      </div>
+      <form class="join-form card" data-preview-form data-join-form>
+        <fieldset>
+          <legend><strong>How would you like to take part?</strong> <span class="muted">Pick any.</span></legend>
+          <div class="option-grid">
+            {% for o in data.join_options %}
+            <label class="option-check" for="home-opt-{{ o.id }}">
+              <input type="checkbox" id="home-opt-{{ o.id }}" name="options" value="{{ o.id }}">
+              <span>{{ o.short_label }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="home-email">Email</label>
+          <div class="inline-form">
+            <input class="input" id="home-email" type="email" name="email" placeholder="you@institution.edu" autocomplete="email">
+            <button class="btn btn--primary" type="submit">Join VETNET</button>
+          </div>
+        </div>
+        {{ m.form_status() }}
+        <p class="form-note">You’ll be added to the VETNET e-list automatically. <a href="{{ SITEURL }}/join/">See what happens next for each option →</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

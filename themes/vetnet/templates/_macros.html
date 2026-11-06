@@ -1,0 +1,182 @@
+{#- Shared macros. Import with: {% import "_macros.html" as m with context %} -#}
+
+{% macro icon(name, size=18) -%}
+<svg class="icon icon-{{ name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- if name == 'lock' %}<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+{%- elif name == 'unlock' %}<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.4-2"/>
+{%- elif name == 'download' %}<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>
+{%- elif name == 'search' %}<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>
+{%- elif name == 'linkedin' %}<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-2.6 4-2.6 4 0v3"/>
+{%- elif name == 'github' %}<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/>
+{%- elif name == 'cloud' %}<path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9.5 4.25 4.25 0 0 1 17.5 18H7z"/>
+{%- elif name == 'star' %}<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>
+{%- elif name == 'file' %}<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/>
+{%- elif name == 'mail' %}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+{%- elif name == 'shield' %}<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>
+{%- elif name == 'calendar' %}<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>
+{%- elif name == 'book' %}<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/>
+{%- elif name == 'bolt' %}<path d="M13 3L5 13h6l-1 8 8-10h-6z"/>
+{%- elif name == 'check' %}<path d="M5 12.5l4.5 4.5L19 7.5"/>
+{%- elif name == 'arrow' %}<path d="M5 12h14M13 6l6 6-6 6"/>
+{%- elif name == 'login' %}<path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 8l4 4-4 4M14 12H4"/>
+{%- elif name == 'clipboard' %}<rect x="6" y="5" width="12" height="16" rx="2"/><path d="M9 5V4h6v1M9 11h6M9 15h6"/>
+{%- elif name == 'heart' %}<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>
+{%- elif name == 'users' %}<circle cx="9" cy="9" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 6.2a3 3 0 0 1 0 5.6M18 14.8c1.8.7 3 2.4 3 5.2"/>
+{%- elif name == 'database' %}<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/>
+{%- elif name == 'chat' %}<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>
+{%- elif name == 'copy' %}<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/>
+{%- elif name == 'document' %}<path d="M7 3h7l4 4v14H7z"/><path d="M10 12h5M10 16h5"/>
+{%- elif name == 'menu' %}<path d="M4 7h16M4 12h16M4 17h16"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}
+
+{#- Brand mark: placeholder "V" network logo. -#}
+{% macro logo_mark() -%}
+<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="10" fill="#B31B1B"/><path d="M13 14l11 21 11-21M24 35V26" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="14" r="3.5" fill="#fff"/><circle cx="35" cy="14" r="3.5" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="#F6C9C4"/></svg>
+{%- endmacro %}
+
+{#- Internal URL helper: u('/about/') -> "../about/" depending on page depth. -#}
+{% macro u(path) -%}{{ SITEURL }}{{ path }}{%- endmacro %}
+
+{#- Button / link. href=None renders a disabled stand-in (no href). -#}
+{% macro action(label, href, style='primary', icon_name=None, size=None, extra='') -%}
+{%- set cls = 'btn btn--' ~ style ~ (' btn--' ~ size if size else '') ~ (' ' ~ extra if extra else '') -%}
+{%- if href -%}
+<a class="{{ cls }}" href="{{ href }}"{% if href.startswith('http') %} rel="noopener"{% endif %}>{% if icon_name %}{{ icon(icon_name) }}{% endif %}{{ label }}</a>
+{%- else -%}
+<span class="{{ cls }} is-disabled" aria-disabled="true" title="Coming soon">{% if icon_name %}{{ icon(icon_name) }}{% endif %}{{ label }}<span class="visually-hidden"> (coming soon)</span></span>
+{%- endif -%}
+{%- endmacro %}
+
+{#- Mailto button. addr=None renders a disabled stand-in. -#}
+{% macro mail_action(label, addr, style='primary', icon_name=None, size=None) -%}
+{{ action(label, ('mailto:' ~ addr) if addr else None, style, icon_name, size) }}
+{%- endmacro %}
+
+{#- Plain text link; disabled stand-in when href is empty. -#}
+{% macro text_link(label, href, extra='') -%}
+{%- if href -%}
+<a href="{{ href }}"{% if extra %} class="{{ extra }}"{% endif %}{% if href.startswith('http') %} rel="noopener"{% endif %}>{{ label }}</a>
+{%- else -%}
+<span class="is-disabled{% if extra %} {{ extra }}{% endif %}" aria-disabled="true" title="Coming soon">{{ label }}<span class="visually-hidden"> (coming soon)</span></span>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro badge_founding() -%}
+<span class="badge badge--founding">{{ icon('star', 13) }}Founding member</span>
+{%- endmacro %}
+{% macro badge_donor() -%}
+<span class="badge badge--donor">{{ icon('database', 13) }}Data donor</span>
+{%- endmacro %}
+
+{% macro section_head(eyebrow, title, intro=None, tag='h2') -%}
+<div class="section-head">
+  {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+  <{{ tag }}>{{ title }}</{{ tag }}>
+  {% if intro %}<p>{{ intro }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{#- Preview notice shown at the top of preview-only pages. -#}
+{% macro preview_notice(text) -%}
+<p class="notice notice--page" role="note"><strong>Preview only.</strong> {{ text }}</p>
+{%- endmacro %}
+
+{#- Article date: "date_label" metadata if present, otherwise the formatted date. -#}
+{% macro article_date(a) -%}
+{%- if a.date_label is defined and a.date_label -%}{{ a.date_label }}{%- else -%}{{ a.date.strftime('%B') }} {{ a.date.day }}, {{ a.date.year }}{%- endif -%}
+{%- endmacro %}
+
+{% macro person_card(p) -%}
+<article class="person-card card"
+  data-name="{{ p.name|lower }}"
+  data-search="{{ (p.name ~ ' ' ~ p.org ~ ' ' ~ p.title ~ ' ' ~ (p.expertise or ''))|lower }}"
+  data-team="{{ p.team or '' }}"
+  data-sector="{{ p.sector }}"
+  data-donor="{{ 'true' if p.data_donor else 'false' }}">
+  <div class="person-top">
+    <span class="photo-tile" aria-hidden="true">{{ p.initials }}</span>
+    <div class="person-id">
+      <h3>{{ p.name }}</h3>
+      <p class="person-title">{{ p.title }}</p>
+    </div>
+    {% if p.linkedin %}<a class="icon-btn" href="{{ p.linkedin }}" rel="noopener" aria-label="{{ p.name }} on LinkedIn">{{ icon('linkedin', 18) }}</a>{% endif %}
+  </div>
+  <p class="person-org">{{ p.org }}</p>
+  <div class="person-tags">
+    {% if p.team %}<span class="tag tag--team">{{ (data.teams|selectattr('id', 'equalto', p.team)|first).name }}</span>{% endif %}
+    <span class="tag">{{ p.sector }}</span>
+  </div>
+  <div class="person-tags">
+    {% if p.founding_member %}{{ badge_founding() }}{% endif %}
+    {% if p.data_donor %}{{ badge_donor() }}{% endif %}
+  </div>
+  {% if p.expertise %}<p class="person-expertise"><strong>Expertise:</strong> {{ p.expertise }}</p>{% endif %}
+</article>
+{%- endmacro %}
+
+{% macro partner_tile(p) -%}
+<li class="partner-tile card" data-group="{{ p.group }}">
+  <span class="logo-tile" aria-hidden="true">Logo</span>
+  <div>
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.type }} · {{ p.country }}</p>
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro news_card(a, lead=False) -%}
+<article class="news-card card{% if lead %} news-card--lead{% endif %}">
+  {% if lead %}<div class="news-media" aria-hidden="true"><span class="placeholder">[Whitepaper cover or Thought Summit group photo]</span></div>{% endif %}
+  <div class="news-body">
+    <p class="news-meta">
+      <span class="tag tag--category{% if a.category|string == 'Publication' %} tag--category-publication{% endif %}">{{ a.category }}</span>
+      <span>{{ article_date(a) }}{% if a.location is defined and a.location %} · {{ a.location }}{% endif %}</span>
+    </p>
+    <h3><a href="{{ SITEURL }}/{{ a.url }}">{{ a.title }}</a></h3>
+    <p>{{ a.summary|striptags }}</p>
+    {% if lead and a.link is defined and a.link %}<p><a class="link-arrow" href="{{ a.link }}" rel="noopener">{{ a.link_label if a.link_label is defined else 'Read more' }} →</a></p>{% endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro dataset_card(d) -%}
+<article class="dataset-card card" id="dataset-{{ d.id }}"
+  data-access="{{ d.access }}"
+  data-species="{{ d.species|join('|') }}"
+  data-types="{{ d.data_types|join('|') }}"
+  data-search="{{ (d.name ~ ' ' ~ d.description ~ ' ' ~ d.data_types|join(' ') ~ ' ' ~ d.species|join(' '))|lower }}">
+  <div class="dataset-main">
+    <h3>
+      {{ d.name }}
+      {% if d.access == 'open' %}<span class="badge badge--open">Open access</span>{% else %}<span class="badge badge--restricted">Restricted</span>{% endif %}
+      {% if d.example %}<span class="badge badge--example">Example</span>{% endif %}
+    </h3>
+    <p class="chips-inline">
+      {% for t in d.data_types %}<span class="tag">{{ t }}</span>{% endfor %}
+      {% for s in d.species %}<span class="tag">{{ s }}</span>{% endfor %}
+      {% if d.format %}<span class="tag">{{ d.format }}</span>{% endif %}
+    </p>
+    <p class="dataset-desc">{% if d.description.startswith('[') %}<span class="placeholder">{{ d.description }}</span>{% else %}{{ d.description }}{% endif %}</p>
+    <p class="dataset-links">
+      <span class="dataset-path">{{ icon('cloud', 16) }}<code class="placeholder">{{ d.s3_path }}</code></span>
+      <span class="dataset-doc">{{ icon('file', 16) }}{{ text_link('Documentation', d.docs_url) }}</span>
+      {% if d.access == 'restricted' %}<span class="dataset-contact">Contact: <span class="placeholder">{{ d.contact }}</span></span>{% endif %}
+    </p>
+  </div>
+  <div class="dataset-actions">
+    {% if d.access == 'restricted' %}
+    {{ action('Request access', data.site.links.access_request_form, 'amber-outline') }}
+    <span class="btn btn--locked is-disabled" aria-disabled="true" title="Unlocks after an access request is approved">{{ icon('lock', 16) }}Download<span class="visually-hidden"> (locked until access is approved)</span></span>
+    {% else %}
+    {{ action('Download', d.download_url, 'primary', 'download') }}
+    {% endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+{#- A visual-only form: submission is blocked by site.js and shows a message. -#}
+{% macro form_status() -%}
+<p class="form-status" role="status" hidden></p>
+{%- endmacro %}

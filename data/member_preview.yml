@@ -1,0 +1,29 @@
+# Sample data for the For Members preview page. Everything here is placeholder.
+welcome:
+  first_name: "[First name]"
+  institution: "[Institution]"
+  member_since: "[Month YYYY]"
+  team: Repos team
+  badges: [founding, donor]
+donated:
+  tiles:
+    - {value: "3", label: Datasets donated}
+    - {value: "1", label: Published}
+    - {value: "[###]", label: Total downloads}
+    - {value: "[#]", label: Papers citing your data}
+  rows:
+    - {name: "[Dataset name — e.g., canine thoracic CT]", type: CT · DICOM, contributed: "[Mon YYYY]", status: Published, access: Open, downloads: "[###]", cited: "[#] papers"}
+    - {name: "[Dataset name — e.g., feline radiographs]", type: Radiograph · DICOM, contributed: "[Mon YYYY]", status: De-identifying, access: Restricted, downloads: "—", cited: "—"}
+    - {name: "[Dataset name — e.g., clinical notes]", type: Free text, contributed: "[Mon YYYY]", status: Intake review, access: TBD, downloads: "—", cited: "—"}
+requests:
+  - {name: "[Restricted dataset name]", status: Approved}
+  - {name: "[Restricted dataset name]", status: Under review}
+working_group:
+  name: Repos team
+  next_meeting: "[Day, Month DD · time]"
+  links: [Meeting notes, Shared folder, Team roster]
+announcements:
+  - {date: "[Month DD]", text: "[Announcement — e.g., call for benchmark task proposals]"}
+  - {date: "[Month DD]", text: "[Announcement — e.g., all-hands recording posted]"}
+participation: [Updates & announcements, Contribute data, Technical infrastructure]
+resources: [Data contribution guidelines, Data use agreement templates, Presentation & logo kit, Members directory]

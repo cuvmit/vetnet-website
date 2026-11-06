@@ -1,0 +1,28 @@
+- id: whitepaper
+  type: Whitepaper
+  title: "VETNET: Assembling Benchmark Datasets for AI-Driven Veterinary Innovation"
+  venue: arXiv
+  arxiv_id: "2610.14149"
+  date_label: October 2026
+  url: https://arxiv.org/abs/2610.14149
+  summary: >-
+    Drafted at the June 2026 Cornell Thought Summit, the whitepaper makes the case
+    for VETNET — an ecosystem of live benchmarks for AI in veterinary medicine —
+    and sets out how academia, industry and regulators can build standardized,
+    high-quality veterinary datasets together.
+  abstract_placeholder: "[Replace with 2–3 sentences from the abstract.]"
+  citations: null
+  cite_text: >-
+    Ivanek, R., Cazer, C., Basran, P., Sun, J. J., et al. (2026). VETNET:
+    Assembling Benchmark Datasets for AI-Driven Veterinary Innovation.
+    arXiv preprint arXiv:2610.14149.
+  cite_note: "[Confirm author order against arXiv.]"
+  bibtex: |-
+    @article{vetnet2026,
+      title   = {VETNET: Assembling Benchmark Datasets for
+                 AI-Driven Veterinary Innovation},
+      author  = {Ivanek, Renata and Cazer, Casey and Basran, Parminder
+                 and Sun, Jennifer J. and others},
+      journal = {arXiv preprint arXiv:2610.14149},
+      year    = {2026}
+    }

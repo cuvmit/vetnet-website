@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{%- import "_macros.html" as m with context -%}
+{% block title %}News &amp; Events | {{ SITENAME }}{% endblock %}
+{% block description %}News, events, talks and publications from VETNET.{% endblock %}
+{% block body_class %}page-news{% endblock %}
+
+{% block hero %}
+<section class="hero hero--page">
+  <div class="container">
+    <p class="eyebrow">News &amp; Events</p>
+    <h1>What’s happening at VETNET</h1>
+    <p class="lead">Publications, events and talks from the VETNET community, newest first.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    {% if articles %}
+    <ul class="news-list">
+      {% for a in articles %}
+      <li>{{ m.news_card(a) }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty empty--plain">No news yet. Check back soon.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

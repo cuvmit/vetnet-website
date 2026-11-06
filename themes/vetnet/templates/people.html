@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{%- import "_macros.html" as m with context -%}
+{% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
+{% block description %}{{ page.summary|striptags }}{% endblock %}
+{% block body_class %}page-people{% endblock %}
+
+{% block hero %}
+{% set stats = data.stats %}
+<section class="hero hero--page">
+  <div class="container hero-split">
+    <div>
+      <p class="eyebrow">People</p>
+      <h1>The people behind VETNET</h1>
+      <p class="lead">{{ stats.collaborators_total }} collaborators from veterinary medicine, computer science, statistics, ethics, law and industry. Founding members co-authored our 2026 whitepaper.</p>
+    </div>
+    <ul class="pills" aria-label="Jump to a group">
+      <li><a class="pill" href="#collaborators">Collaborators · {{ stats.collaborators }}</a></li>
+      <li><a class="pill" href="#teams">Working groups · {{ stats.working_groups }}</a></li>
+      <li><a class="pill" href="#pis">PIs · {{ stats.pis }}</a></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% set stats = data.stats %}
+<section class="section" id="collaborators">
+  <div class="container">
+    <div class="section-head section-head--inline">
+      <h2>Collaborators</h2>
+      <p>Researchers, clinicians, students and industry partners across all four working groups.</p>
+    </div>
+
+    <form class="toolbar card js-only" role="search" aria-label="Filter collaborators" data-people-filters>
+      <div class="toolbar-row">
+        <div class="search-box">
+          {{ m.icon('search', 18) }}
+          <label class="visually-hidden" for="people-search">Search by name, institution or expertise</label>
+          <input class="input" id="people-search" type="search" placeholder="Search by name, institution or expertise" autocomplete="off">
+        </div>
+        <div class="segmented" role="group" aria-label="Filter by team" data-team-filter>
+          <button type="button" data-team="" aria-pressed="true">All teams</button>
+          {% for t in data.teams %}<button type="button" data-team="{{ t.id }}" aria-pressed="false">{{ t.name }}</button>{% endfor %}
+        </div>
+        <div>
+          <label class="visually-hidden" for="people-sector">Sector</label>
+          <select class="select" id="people-sector">
+            <option value="">All sectors</option>
+            <option>Academia</option>
+            <option>Industry</option>
+            <option>Clinical &amp; public</option>
+          </select>
+        </div>
+        <button class="btn btn--outline btn--sm" type="button" id="people-donors" aria-pressed="false">{{ m.icon('database', 16) }}Data donors</button>
+      </div>
+    </form>
+
+    <div class="results-bar">
+      <p data-people-count aria-live="polite">Showing all {{ stats.collaborators }} collaborators, A–Z</p>
+      <p class="legend">{{ m.badge_founding() }} co-authored the 2026 preprint {{ m.badge_donor() }} contributed data</p>
+    </div>
+
+    <div class="people-grid" data-people-grid>
+      {% for p in data.collaborators %}{{ m.person_card(p) }}{% endfor %}
+    </div>
+    <div class="empty empty--filters" data-people-empty hidden>
+      <div>
+        <h3>No collaborators match these filters</h3>
+        <p>Try a different search, or clear the filters.</p>
+      </div>
+      <button class="btn btn--outline" type="button" data-people-clear>Clear filters</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight-top" id="teams">
+  <div class="container">
+    <div class="section-head section-head--inline">
+      <h2>Working groups &amp; leaders</h2>
+      <p>Four teams. Each team drives one area of VETNET’s work.</p>
+    </div>
+    <ul class="grid-4">
+      {% for t in data.teams %}
+      <li class="team-card card" id="team-{{ t.id }}">
+        <div class="team-head">
+          <p class="team-label">Working group</p>
+          <h3>{{ t.name }}</h3>
+          <p>{% if t.focus %}{{ t.focus }}{% else %}<span class="placeholder">[One-line focus of the team]</span>{% endif %}</p>
+        </div>
+        <div class="team-body">
+          {% for name in t.leaders %}
+          {% set leader = data.people|selectattr('name', 'equalto', name)|first %}
+          <div class="leader"><span class="photo-tile" aria-hidden="true">{{ leader.initials }}</span><div><strong>{{ leader.name }}</strong><br><span class="muted">{{ leader.title }} · {{ leader.org }}</span>{% if leader.role == 'pi' %} <span class="badge badge--solid">Also a PI</span>{% endif %}</div></div>
+          {% else %}
+          <p class="muted"><span class="placeholder">Leader to be announced</span></p>
+          {% endfor %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight-top" id="pis">
+  <div class="container">
+    <div class="section-head section-head--inline">
+      <h2>Principal investigators</h2>
+      <p>The Cornell faculty who launched VETNET and organized its 2026 Thought Summit.</p>
+    </div>
+    <div class="pi-grid">
+      {% for p in data.pis %}
+      <article class="pi-card card">
+        <div class="pi-top">
+          <span class="photo-tile photo-tile--lg" aria-hidden="true">{{ p.initials }}</span>
+          {% if p.linkedin %}<a class="icon-btn" href="{{ p.linkedin }}" rel="noopener" aria-label="{{ p.name }} on LinkedIn">{{ m.icon('linkedin', 18) }}</a>{% endif %}
+        </div>
+        <h3>{{ p.name }}</h3>
+        <p class="person-title">{{ p.title }}</p>
+        <p class="person-org">{{ p.org }}</p>
+        <div class="person-tags">
+          <span class="badge badge--solid">{{ p.pi_label }}</span>
+          {% if p.team %}<span class="tag tag--team">{{ (data.teams|selectattr('id', 'equalto', p.team)|first).name }}</span>{% endif %}
+        </div>
+        <div class="person-tags">
+          {% if p.founding_member %}{{ m.badge_founding() }}{% endif %}
+          {% if p.data_donor %}{{ m.badge_donor() }}{% endif %}
+        </div>
+        <p class="pi-bio">{{ p.bio }}</p>
+        {% if p.pi_label == 'Contact PI' %}
+        <p>{{ m.mail_action('Contact the PI', data.site.contact.contact_pi, 'primary', 'mail', None) }}</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

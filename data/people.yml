@@ -1,0 +1,262 @@
+# People directory: 4 PIs + 36 collaborators. Drives every people count on the site.
+# Required: name, role (pi|collaborator), title, org, sector (Academia|Industry|Clinical & public)
+# Optional: pi_label, sort_name, author_name, team (mvp|repos|governance|stakeholder),
+#           expertise, bio, linkedin, photo, founding_member (default true), data_donor (default false)
+
+# ---- Principal investigators ----
+- name: Renata Ivanek
+  role: pi
+  pi_label: Contact PI
+  title: Professor, Population Medicine and Diagnostic Sciences
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  bio: Leads the Cornell-funded project that launched VETNET; expertise in population medicine and veterinary epidemiology. First point of contact for VETNET.
+- name: Casey Cazer
+  role: pi
+  pi_label: Co-PI
+  title: Assistant Professor, Clinical Sciences and Public & Ecosystem Health
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  bio: Co-organized the VETNET Thought Summit; brings clinical and public and ecosystem health perspectives.
+- name: Parminder Basran
+  role: pi
+  pi_label: Co-PI
+  title: Associate Professor, Clinical Sciences
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  data_donor: true
+  bio: Co-organized the VETNET Thought Summit; brings clinical sciences expertise to VETNET’s imaging focus.
+- name: Jennifer J. Sun
+  role: pi
+  pi_label: Co-PI
+  title: Assistant Professor, Computer Science
+  org: Cornell Bowers CIS
+  sector: Academia
+  sort_name: Sun
+  bio: Co-organized the VETNET Thought Summit; brings computer science and AI expertise.
+
+# ---- Collaborators ----
+- name: Gayatri Anil
+  role: collaborator
+  title: DVM/PhD Candidate, Epidemiology
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary epidemiology.
+- name: Tommaso Banzato
+  role: collaborator
+  title: Associate Professor, Veterinary Diagnostic Imaging
+  org: University of Padua
+  sector: Academia
+  data_donor: true
+  expertise: Veterinary diagnostic imaging.
+- name: Elizabeth Barton
+  role: collaborator
+  title: Co-Founder
+  org: Vet Validaite
+  sector: Industry
+  expertise: Veterinary AI from an industry perspective.
+- name: Dottie Cimino Brown
+  role: collaborator
+  sort_name: Brown
+  title: VP, Science & Healthcare Innovation
+  org: Mars Veterinary Health
+  sector: Industry
+  expertise: Veterinary science and healthcare innovation.
+- name: Leszek Bukowski
+  role: collaborator
+  title: Chief AI Officer
+  org: VetApp
+  sector: Industry
+  expertise: Applied AI in veterinary software.
+- name: Marta Castelhano
+  role: collaborator
+  title: Associate Research Professor; Director, Cornell Veterinary Biobank
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary biobanking and sample data.
+- name: Simon Coghlan
+  role: collaborator
+  title: Senior Lecturer, Digital Ethics
+  org: University of Melbourne
+  sector: Academia
+  expertise: Digital and AI ethics.
+- name: Chris De Sa
+  role: collaborator
+  sort_name: De Sa
+  title: Associate Professor, Computer Science
+  org: Cornell Bowers CIS
+  sector: Academia
+  expertise: Computer science and machine learning.
+- name: Nikki Dutta
+  role: collaborator
+  title: Scientific Program Officer
+  org: Foundation for Food & Agriculture Research
+  sector: Clinical & public
+  expertise: Research funding for food and agriculture.
+- name: Peter Frazier
+  role: collaborator
+  title: Professor, Applied Mathematics & Statistics
+  org: Cornell Duffield Engineering
+  sector: Academia
+  expertise: Applied mathematics and statistics.
+- name: Hala Ghali
+  role: collaborator
+  title: Data Science Manager
+  org: Schwarzman Animal Medical Center
+  sector: Clinical & public
+  expertise: Clinical data science.
+- name: Julio Giordano
+  role: collaborator
+  title: Professor, Dairy Cattle Biology & Management
+  org: Cornell CALS
+  sector: Academia
+  expertise: Dairy cattle biology and herd management.
+- name: Joshua Glass
+  role: collaborator
+  title: Research Specialist
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary research support.
+- name: David Hogg
+  role: collaborator
+  title: Professor, Artificial Intelligence
+  org: University of Leeds
+  sector: Academia
+  expertise: Artificial intelligence.
+- name: Nicholas Hollingshead
+  role: collaborator
+  title: Data Analyst
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary data analysis.
+- name: Adam Kiehl
+  role: collaborator
+  title: Health Data Scientist
+  org: Colorado State University
+  sector: Academia
+  expertise: Health data science.
+- name: Katherine Koebel
+  role: collaborator
+  title: PhD Candidate, Epidemiology
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary epidemiology.
+- name: Ziang Liu
+  role: collaborator
+  title: PhD Student, Computer Science
+  org: Cornell Bowers CIS
+  sector: Academia
+  expertise: Computer science.
+- name: Monica Meduri
+  role: collaborator
+  title: AI Engineer
+  org: Schwarzman Animal Medical Center
+  sector: Clinical & public
+  expertise: Clinical AI engineering.
+- name: Param Mohapatra
+  role: collaborator
+  title: PhD Student, Applied Mathematics
+  org: Cornell Center for Applied Mathematics
+  sector: Academia
+  expertise: Applied mathematics.
+- name: Cliona Molony
+  role: collaborator
+  title: VP R&D, Chief Data Officer & Head of Data Science
+  org: IDEXX
+  sector: Industry
+  expertise: Veterinary diagnostics data science.
+- name: Kim Nayyer
+  role: collaborator
+  title: Edward Cornell Law Librarian; Associate Dean for Library Services
+  org: Cornell Law School
+  sector: Academia
+  expertise: Law and legal information.
+- name: Amelia Nelson
+  role: collaborator
+  title: PhD Student, Food Science & Technology
+  org: Cornell University
+  sector: Academia
+  expertise: Food science and technology.
+- name: Peter-John (PJ) Noble
+  role: collaborator
+  author_name: Peter-John Noble
+  sort_name: Noble
+  title: Professor, Small Animal Clinical Science
+  org: University of Liverpool
+  sector: Academia
+  expertise: Small animal clinical science; summit keynote on veterinary benchmarks.
+- name: Christopher Pinard
+  role: collaborator
+  title: Veterinary Oncologist; Lead Health AI Researcher
+  org: ANI.ML · Toronto Animal Cancer Centre
+  sector: Industry
+  data_donor: true
+  expertise: Veterinary oncology and health AI.
+- name: Lauren Que
+  role: collaborator
+  title: Regulatory Scientific Reviewer
+  org: U.S. FDA Center for Veterinary Medicine
+  sector: Clinical & public
+  expertise: Veterinary regulatory science.
+- name: Beryl Rabindran
+  role: collaborator
+  title: Life Sciences Lead
+  org: AWS Open Data
+  sector: Industry
+  expertise: Open data for the life sciences.
+- name: Scott Ross
+  role: collaborator
+  title: Data Engineer
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Data engineering.
+- name: Ron Seccia
+  role: collaborator
+  title: Director of Information Technology
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Information technology and infrastructure.
+- name: Moira Sheehan
+  role: collaborator
+  title: Director, Breeding Insight
+  org: University of Florida
+  sector: Academia
+  expertise: Breeding and genomic data.
+- name: Meg Thompson
+  role: collaborator
+  title: Clinical Professor, Diagnostic Imaging
+  org: Cornell College of Veterinary Medicine
+  sector: Academia
+  expertise: Veterinary diagnostic imaging.
+- name: Fei Wang
+  role: collaborator
+  title: Professor, Population Health Sciences
+  org: Weill Cornell Medicine
+  sector: Academia
+  expertise: Population health sciences and health AI.
+- name: Tracy Webb
+  role: collaborator
+  title: Associate Professor, Clinical Sciences
+  org: Colorado State University
+  sector: Academia
+  expertise: Veterinary clinical sciences.
+- name: Kilian Weinberger
+  role: collaborator
+  title: Professor, Computer Science
+  org: Cornell Bowers CIS
+  sector: Academia
+  expertise: Machine learning; summit keynote on datasets for foundation models.
+- name: Heather Whitney
+  role: collaborator
+  title: Assistant Professor, Radiology
+  org: University of Chicago
+  sector: Academia
+  expertise: Medical imaging; summit keynote on lessons from human-medicine benchmarks.
+- name: Chen (Mila) Xin
+  role: collaborator
+  author_name: Chen Xin
+  sort_name: Xin
+  title: PhD Candidate, Epidemiology
+  org: Cornell CVM · City University of Hong Kong
+  sector: Academia
+  expertise: Veterinary epidemiology.

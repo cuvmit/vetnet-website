@@ -1,0 +1,52 @@
+# Dataset catalog. Entries with example: true are demonstration records from the
+# mockup; they appear on the Databases page but are not counted on the Home page.
+- id: canine-feline-thoracic-ct
+  example: true
+  name: Canine & feline thoracic CT
+  access: open
+  data_types: [CT]
+  species: [Small animals]
+  format: DICOM
+  description: "[Short description: what the scans show, how many studies, which institutions contributed, and labels included.]"
+  s3_path: "s3://[bucket-name]/[path]"
+  docs_url: null
+- id: small-animal-thoracic-radiographs
+  example: true
+  name: Small-animal thoracic radiographs
+  access: open
+  data_types: [Radiograph]
+  species: [Small animals]
+  format: DICOM
+  description: "[Short description of the dataset and its intended research use.]"
+  s3_path: "s3://[bucket-name]/[path]"
+  docs_url: null
+- id: equine-limb-radiographs
+  example: true
+  name: Equine limb radiographs
+  access: open
+  data_types: [Radiograph]
+  species: [Large animals]
+  format: DICOM
+  description: "[Short description of the dataset and its intended research use.]"
+  s3_path: "s3://[bucket-name]/[path]"
+  docs_url: null
+- id: abdominal-ct-clinical
+  example: true
+  name: Multi-site abdominal CT with clinical records
+  access: restricted
+  data_types: [CT, Clinical records]
+  species: []
+  description: "[Short description, and why access is restricted — e.g., linked clinical information.]"
+  s3_path: "s3://[bucket-name]/[path]"
+  docs_url: null
+  contact: "[Name]"
+- id: bovine-radiographs-outcomes
+  example: true
+  name: Bovine radiographs with outcomes
+  access: restricted
+  data_types: [Radiograph]
+  species: [Large animals]
+  description: "[Short description, and why access is restricted.]"
+  s3_path: "s3://[bucket-name]/[path]"
+  docs_url: null
+  contact: "[Name]"

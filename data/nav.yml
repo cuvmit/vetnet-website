@@ -1,0 +1,17 @@
+header:
+  - {label: About, url: /about/}
+  - {label: People, url: /people/}
+  - {label: Research, url: /research/}
+  - {label: Databases, url: /databases/}
+  - {label: News & Events, url: /news/}
+  - {label: Join Us, url: /join/}
+  - {label: Sponsors, url: /sponsors/}
+  - {label: For Members, url: /members/, icon: lock}
+
+footer_explore:
+  - {label: About, url: /about/}
+  - {label: People, url: /people/}
+  - {label: Research, url: /research/}
+  - {label: Databases, url: /databases/}
+  - {label: Join Us, url: /join/}
+  - {label: Sponsors, url: /sponsors/}

@@ -1,0 +1,27 @@
+# Site-wide settings. A value of null means "not available yet": the matching
+# button or link is shown as a disabled stand-in (see README, "Content to fill in").
+banner:
+  enabled: true
+  badge: NEW
+  message: The VETNET whitepaper is now on arXiv.
+  link_label: Read it
+  link: https://arxiv.org/abs/2610.14149
+  survey_message: Help shape VETNET.
+  survey_label: Take the community survey
+
+links:
+  survey: null
+  linkedin: null
+  github: null
+  aws_open_data: null
+  sponsor_packet: null
+  access_request_form: null
+  feedback_form: null
+  cornell_ai: null
+  whitepaper: https://arxiv.org/abs/2610.14149
+
+contact:
+  general: null
+  sponsorship: null
+  data_access: null
+  contact_pi: null

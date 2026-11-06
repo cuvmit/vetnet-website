@@ -1,0 +1,50 @@
+- id: updates
+  label: Receive VETNET updates and announcements
+  short_label: Receive VETNET updates and announcements
+  description: News, events and new datasets in your inbox.
+  next_step: Welcome email with the latest update; you stay on the e-list.
+- id: events
+  label: Join community events, convenings or working groups
+  short_label: Join community events, convenings or working groups
+  description: Meetings, workshops and the MVP, Repos, Governance and Stakeholder teams.
+  next_step: Calendar of upcoming events and a working-group interest form; team leads are notified.
+- id: use-data
+  label: Use VETNET benchmark datasets
+  short_label: Use VETNET benchmark datasets for research or model development
+  description: For research or model development.
+  next_step: Links to the dataset catalog, documentation and free member sign-up, plus the restricted-access form.
+- id: contribute-data
+  label: Contribute data or datasets
+  short_label: Contribute data or datasets
+  description: Share imaging, clinical records or other veterinary data.
+  next_step: Data contribution intake form and our data-protection overview; the data team follows up.
+- id: expertise
+  label: Contribute your expertise
+  short_label: Contribute your expertise
+  description: Veterinary science, animal health, computer science and more.
+  next_step: Short expertise-profile form so we can match you with the right team.
+- id: validation
+  label: Contribute to validation
+  short_label: Contribute to validation (testing models in real-world settings)
+  description: Test models in real-world clinical settings.
+  next_step: Validation-site questionnaire (setting, species, caseload).
+- id: infrastructure
+  label: Contribute to technical infrastructure & platform development
+  short_label: Contribute to technical infrastructure & platform development
+  description: Pipelines, repositories and benchmark tooling.
+  next_step: Invitation to the VETNET GitHub and our contributor guide.
+- id: governance
+  label: Help shape data governance, ethics & policy
+  short_label: Help shape data governance, ethics & policy
+  description: Data sharing terms, ethics and regulatory questions.
+  next_step: Introduction to the Governance team and its current open questions.
+- id: education
+  label: Contribute to education, training & mentorship
+  short_label: Contribute to education, training & mentorship
+  description: Teaching, tutorials and mentoring students.
+  next_step: Education and mentorship interest form.
+- id: partnerships
+  label: Facilitate partnerships or funding opportunities
+  short_label: Facilitate partnerships or funding opportunities
+  description: Connect VETNET with organizations, funders or sponsors.
+  next_step: Sent to the contact PI, with our sponsorship information.

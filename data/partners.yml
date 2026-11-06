@@ -1,0 +1,22 @@
+# Partner organizations, in the order shown on the Home page.
+# type: University | Industry | Clinical | Nonprofit | Government
+- {name: Cornell University, type: University, country: USA}
+- {name: Weill Cornell Medicine, type: University, country: USA}
+- {name: Colorado State University, type: University, country: USA}
+- {name: University of Chicago, type: University, country: USA}
+- {name: University of Florida, type: University, country: USA}
+- {name: University of Liverpool, type: University, country: UK}
+- {name: University of Leeds, type: University, country: UK}
+- {name: University of Padua, type: University, country: Italy}
+- {name: University of Melbourne, type: University, country: Australia}
+- {name: City University of Hong Kong, type: University, country: Hong Kong}
+- {name: IDEXX, type: Industry, country: USA}
+- {name: Mars Veterinary Health, type: Industry, country: USA}
+- {name: AWS Open Data, type: Industry, country: USA}
+- {name: VetApp, type: Industry, country: Poland}
+- {name: Vet Validaite, type: Industry, country: UK}
+- {name: ANI.ML, type: Industry, country: Canada}
+- {name: Schwarzman Animal Medical Center, type: Clinical, country: USA}
+- {name: Toronto Animal Cancer Centre, type: Clinical, country: Canada}
+- {name: Foundation for Food & Agriculture Research, type: Nonprofit, country: USA}
+- {name: U.S. FDA Center for Veterinary Medicine, type: Government, country: USA}
