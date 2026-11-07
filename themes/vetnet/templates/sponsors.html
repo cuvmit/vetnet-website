@@ -5,9 +5,8 @@
 {% block body_class %}page-sponsors{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">Sponsors</p>
     <h1>The organizations that make VETNET possible</h1>
     <p class="lead">Sponsorship funds the open datasets, benchmarks and convenings that the whole veterinary AI community can use.</p>
   </div>
@@ -18,44 +17,34 @@
 <section class="section">
   <div class="container">
     <h2>Our sponsor</h2>
-    <div class="sponsor-card card">
-      <div class="sponsor-logo placeholder" aria-hidden="true">[Cornell AI Initiative logo]</div>
-      <div>
-        <p><span class="badge badge--solid">Founding sponsor</span></p>
-        <h3>Cornell AI Initiative</h3>
-        <p>The Cornell AI Initiative supported VETNET’s founding project, including the June 2026 Thought Summit that launched the initiative and produced its whitepaper.</p>
-        <p>{{ m.text_link('Visit the Cornell AI Initiative →', data.site.links.cornell_ai, 'link-arrow') }}</p>
-      </div>
-    </div>
+    <h3>Cornell AI Initiative <span class="badge">Founding sponsor</span></h3>
+    <p class="prose">The Cornell AI Initiative supported VETNET’s founding project, including the June 2026 Thought Summit that launched the initiative and produced its whitepaper.</p>
+    <p>{{ m.text_link('Visit the Cornell AI Initiative', data.site.links.cornell_ai) }} <span class="placeholder muted">[Logo to come]</span></p>
   </div>
 </section>
 
-<section class="section section--tight-top">
+<section class="section">
   <div class="container">
-    <div class="section-head section-head--inline">
+    <div class="section-head">
       <h2>What sponsorship supports</h2>
       <p class="placeholder">[Proposed — adjust to VETNET’s funding priorities]</p>
     </div>
-    <ul class="grid-4">
-      <li class="card info-card"><h3>Open datasets</h3><p>Curating, de-identifying and documenting data for public release.</p></li>
-      <li class="card info-card"><h3>Benchmarks &amp; competitions</h3><p>Building benchmark tasks and running open challenges.</p></li>
-      <li class="card info-card"><h3>Convenings</h3><p>Summits, workshops and working-group meetings.</p></li>
-      <li class="card info-card"><h3>Students &amp; training</h3><p>Fellowships, tutorials and mentorship.</p></li>
+    <ul class="cols cols-4">
+      <li><h3>Open datasets</h3><p class="muted">Curating, de-identifying and documenting data for public release.</p></li>
+      <li><h3>Benchmarks &amp; competitions</h3><p class="muted">Building benchmark tasks and running open challenges.</p></li>
+      <li><h3>Convenings</h3><p class="muted">Summits, workshops and working-group meetings.</p></li>
+      <li><h3>Students &amp; training</h3><p class="muted">Fellowships, tutorials and mentorship.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="section section--tight-top">
+<section class="section">
   <div class="container">
-    <div class="band">
-      <div>
-        <h2>Become a sponsor</h2>
-        <p>Interested in supporting VETNET? Our contact PI, Renata Ivanek, will walk you through sponsorship options and how your support would be recognized.</p>
-      </div>
-      <div class="btn-row">
-        {{ m.mail_action('Contact us about sponsorship', data.site.contact.sponsorship, 'primary') }}
-        {{ m.action('Download sponsor packet (PDF)', data.site.links.sponsor_packet, 'outline') }}
-      </div>
+    <h2>Become a sponsor</h2>
+    <p class="prose">Interested in supporting VETNET? Our contact PI, Renata Ivanek, will walk you through sponsorship options and how your support would be recognized.</p>
+    <div class="btn-row">
+      {{ m.mail_action('Contact us about sponsorship', data.site.contact.sponsorship, 'primary') }}
+      {{ m.action('Download sponsor packet (PDF)', data.site.links.sponsor_packet, 'outline') }}
     </div>
   </div>
 </section>

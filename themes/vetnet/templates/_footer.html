@@ -9,10 +9,6 @@
           <span class="brand-name">VETNET</span>
         </a>
         <p>An open initiative connecting veterinary medicine and data science.</p>
-        <div class="btn-row">
-          {{ m.action('Take the survey', site.links.survey, 'light', None, 'sm') }}
-          {{ m.action('Sponsorship', SITEURL ~ '/sponsors/', 'ghost-light', None, 'sm') }}
-        </div>
       </div>
       <nav aria-label="Explore">
         <h2 class="footer-title">Explore</h2>
@@ -26,31 +22,26 @@
         <h2 class="footer-title">Connect</h2>
         <ul class="footer-list">
           <li>{{ m.text_link('LinkedIn', site.links.linkedin) }}</li>
-          <li>{{ m.text_link('Open-access data (AWS)', site.links.aws_open_data) }}</li>
           <li>{{ m.text_link('GitHub', site.links.github) }}</li>
+          <li>{{ m.text_link('Open-access data (AWS)', site.links.aws_open_data) }}</li>
+          <li>{{ m.text_link('Contact us', ('mailto:' ~ site.contact.general) if site.contact.general else None) }}</li>
         </ul>
       </div>
       <div id="e-list">
         <h2 class="footer-title">Join the e-list</h2>
-        <p class="footer-lead">Get VETNET news in your inbox</p>
         <form class="footer-form" data-preview-form>
           <label class="visually-hidden" for="footer-email">Email address</label>
           <input class="input" id="footer-email" type="email" name="email" placeholder="you@institution.edu" autocomplete="email">
-          <button class="btn btn--pink" type="submit">Subscribe</button>
+          <button class="btn btn--primary" type="submit">Subscribe</button>
           {{ m.form_status() }}
         </form>
         <p class="footer-note">Members who register are added automatically.</p>
-        <div class="btn-row">
-          {{ m.mail_action('Contact us', site.contact.general, 'ghost-light', None, 'sm') }}
-          {{ m.action('Member login', SITEURL ~ '/portal/', 'ghost-light', None, 'sm') }}
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© {{ data.build_year }} VETNET · Sponsored by the Cornell AI Initiative</p>
       <ul>
         <li><a href="{{ SITEURL }}/privacy/">Privacy policy</a></li>
-        <li aria-hidden="true">·</li>
         <li><a href="{{ SITEURL }}/accessibility/">Accessibility</a></li>
       </ul>
     </div>

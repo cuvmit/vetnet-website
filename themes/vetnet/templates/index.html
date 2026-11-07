@@ -5,9 +5,8 @@
 {% block body_class %}page-news{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">News &amp; Events</p>
     <h1>What’s happening at VETNET</h1>
     <p class="lead">Publications, events and talks from the VETNET community, newest first.</p>
   </div>
@@ -18,13 +17,11 @@
 <section class="section">
   <div class="container">
     {% if articles %}
-    <ul class="news-list">
-      {% for a in articles %}
-      <li>{{ m.news_card(a) }}</li>
-      {% endfor %}
-    </ul>
+    <div class="news-list">
+      {% for a in articles %}{{ m.news_item(a) }}{% endfor %}
+    </div>
     {% else %}
-    <p class="empty empty--plain">No news yet. Check back soon.</p>
+    <p class="muted">No news yet. Check back soon.</p>
     {% endif %}
   </div>
 </section>

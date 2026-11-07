@@ -5,16 +5,12 @@
 {% block body_class %}page-join{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
-  <div class="container hero-split">
-    <div>
-      <p class="eyebrow">Join us · Opportunities</p>
-      <h1>There’s a place for you in VETNET</h1>
-      <p class="lead">Undergraduates, graduate students, postdocs, faculty, clinicians and industry researchers all help shape VETNET. Choose one or more ways to take part — each one sends you its own next steps automatically.</p>
-    </div>
-    <div class="btn-row">
-      {{ m.action('Take the community survey', data.site.links.survey, 'light') }}
-      {{ m.action('Sponsorship', SITEURL ~ '/sponsors/', 'ghost-light') }}
+<section class="hero">
+  <div class="container">
+    <h1>There’s a place for you in VETNET</h1>
+    <p class="lead">Undergraduates, graduate students, postdocs, faculty, clinicians and industry researchers all help shape VETNET. Choose one or more ways to take part, and each one sends you its own next steps.</p>
+    <div class="btn-row hero-actions">
+      {{ m.action('Take the community survey', data.site.links.survey, 'outline') }}
     </div>
   </div>
 </section>
@@ -22,32 +18,32 @@
 
 {% block content %}
 <form data-preview-form data-join-form>
-  <section class="section section--tight-bottom">
+  <section class="section">
     <div class="container">
-      <div class="section-head section-head--inline">
+      <div class="section-head">
         <h2>1. Choose how you’d like to take part</h2>
         <p>Select any combination.</p>
       </div>
       <fieldset class="option-cards">
         <legend class="visually-hidden">Ways to take part</legend>
         {% for o in data.join_options %}
-        <div class="option-card card">
+        <div class="option-card">
           <label for="opt-{{ o.id }}">
             <input type="checkbox" id="opt-{{ o.id }}" name="options" value="{{ o.id }}">
             <span class="option-title">{{ o.label }}</span>
           </label>
           <p>{{ o.description }}</p>
-          <p class="next-step">{{ m.icon('bolt', 15) }}<span><strong>Automatic next step:</strong> {{ o.next_step }}</span></p>
+          <p class="next-step"><span class="muted">Next step:</span> {{ o.next_step }}</p>
         </div>
         {% endfor %}
       </fieldset>
     </div>
   </section>
 
-  <section class="section section--tight-bottom">
+  <section class="section">
     <div class="container">
       <h2>2. Tell us about you</h2>
-      <div class="card form-card">
+      <div class="form-card">
         <div class="field-row field-row--4">
           <div class="field"><label for="join-name">Full name</label><input class="input" id="join-name" name="name" type="text" autocomplete="name"></div>
           <div class="field"><label for="join-email">Email</label><input class="input" id="join-email" name="email" type="email" placeholder="you@institution.edu" autocomplete="email"></div>
@@ -60,7 +56,7 @@
           </div>
         </div>
         <div class="form-foot">
-          <p class="form-note">{{ m.icon('mail', 16) }} Everyone who joins is added to the VETNET e-list automatically. Unsubscribe anytime.</p>
+          <p class="form-note">Everyone who joins is added to the VETNET e-list automatically. Unsubscribe anytime.</p>
           <button class="btn btn--primary" type="submit">Join VETNET</button>
         </div>
         {{ m.form_status() }}
@@ -69,18 +65,18 @@
   </section>
 </form>
 
-<section class="section section--tight-bottom" id="groups">
+<section class="section" id="groups">
   <div class="container">
-    <div class="section-head section-head--inline">
+    <div class="section-head">
       <h2>Our working groups</h2>
       <p>Where VETNET’s work gets done. Newcomers of every career stage are welcome.</p>
     </div>
-    <ul class="grid-4">
+    <ul class="cols cols-4">
       {% for t in data.teams %}
-      <li class="card info-card">
+      <li>
         <h3>{{ t.name }}</h3>
-        <p>{% if t.focus %}{{ t.focus }}{% else %}<span class="placeholder">[One-line focus of the team]</span>{% endif %}</p>
-        <p><a class="link-arrow" href="{{ SITEURL }}/people/#team-{{ t.id }}">See leaders →</a></p>
+        <p class="muted">{% if t.focus %}{{ t.focus }}{% else %}<span class="placeholder">[One-line focus of the team]</span>{% endif %}</p>
+        <p><a href="{{ SITEURL }}/people/#team-{{ t.id }}">See leaders</a></p>
       </li>
       {% endfor %}
     </ul>
@@ -88,24 +84,26 @@
 </section>
 
 <section class="section">
-  <div class="container donate">
+  <div class="container">
+   <div class="cols cols-2">
     <div>
-      <h2>Contributing data? Here’s how we protect it</h2>
-      <p>Clinics, hospitals, universities and companies can contribute data to grow the collection. Donors earn a Data donor badge on the People page and are credited in every dataset’s documentation, and can track their datasets from the members area.</p>
+      <h2>Contributing data</h2>
+      <p>Clinics, hospitals, universities and companies can contribute data to grow the collection. Donors are credited in every dataset’s documentation and on the People page, and can track their datasets from the members area.</p>
       <div class="btn-row">
         {{ m.mail_action('Talk to us about donating', data.site.contact.general, 'primary') }}
         {{ m.action('Read our data protections', None, 'outline') }}
       </div>
     </div>
-    <div class="protections">
-      <p class="protections-label"><span class="placeholder">Planned protections [to confirm]</span></p>
-      <ul>
-        <li>{{ m.icon('shield', 20) }}<div><strong>De-identification</strong><br>Owner and patient details removed before any data is shared.</div></li>
-        <li>{{ m.icon('shield', 20) }}<div><strong>Data use agreements</strong><br>Clear terms for how restricted data may be used.</div></li>
-        <li>{{ m.icon('shield', 20) }}<div><strong>Controlled access</strong><br>Sensitive datasets released only to approved members.</div></li>
-        <li>{{ m.icon('shield', 20) }}<div><strong>Credit for donors</strong><br>Donors acknowledged on the site and in documentation.</div></li>
+    <div>
+      <h3>How we plan to protect it <span class="placeholder">[to confirm]</span></h3>
+      <ul class="plain-list">
+        <li><strong>De-identification.</strong> Owner and patient details removed before any data is shared.</li>
+        <li><strong>Data use agreements.</strong> Clear terms for how restricted data may be used.</li>
+        <li><strong>Controlled access.</strong> Sensitive datasets released only to approved members.</li>
+        <li><strong>Credit for donors.</strong> Donors acknowledged on the site and in documentation.</li>
       </ul>
     </div>
+   </div>
   </div>
 </section>
 {% endblock %}

@@ -5,27 +5,21 @@
 {% block body_class %}page-databases{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">Databases</p>
     <h1>Find veterinary datasets</h1>
     <form class="db-search js-only" role="search" data-db-search>
       <label class="visually-hidden" for="db-query">Search datasets</label>
-      <div class="db-search-row">
-        <div class="search-box search-box--lg">
-          {{ m.icon('search', 18) }}
-          <input class="input" id="db-query" type="search" placeholder="Search datasets" autocomplete="off">
-        </div>
-        <button class="btn btn--pink" type="submit">Search</button>
+      <div class="inline-form">
+        <input class="input" id="db-query" type="search" placeholder="Search datasets" autocomplete="off">
+        <button class="btn btn--primary" type="submit">Search</button>
       </div>
-      <div class="try-row">
-        <span>Try:</span>
-        <ul class="chips">
-          {% for kw in ['CT datasets', 'Radiographs', 'Small animals', 'Large animals', 'Clinical records'] %}
-          <li><button class="chip chip--on-red" type="button" data-keyword="{{ kw }}">{{ kw }}</button></li>
-          {% endfor %}
-        </ul>
-      </div>
+      <p class="try-row">
+        <span class="muted">Try:</span>
+        {% for kw in ['CT datasets', 'Radiographs', 'Small animals', 'Large animals', 'Clinical records'] %}
+        <button class="keyword" type="button" data-keyword="{{ kw }}">{{ kw }}</button>
+        {% endfor %}
+      </p>
     </form>
   </div>
 </section>
@@ -34,9 +28,9 @@
 {% block content %}
 {% set open_sets = data.datasets|selectattr('access', 'equalto', 'open')|list %}
 {% set restricted_sets = data.datasets|selectattr('access', 'equalto', 'restricted')|list %}
-<section class="section section--tight-bottom">
+<section class="section">
   <div class="container">
-    <div class="results-bar results-bar--top">
+    <div class="results-bar results-bar--split">
       <p data-db-count aria-live="polite">Showing <strong>{{ data.datasets|length }}</strong> datasets · <strong>{{ open_sets|length }}</strong> open access · <strong>{{ restricted_sets|length }}</strong> restricted</p>
       <div class="db-filters js-only" data-db-filters>
         <div class="segmented" role="group" aria-label="Filter by access">
@@ -58,26 +52,27 @@
     </div>
 
     <div class="db-section" data-db-section="open">
-      <div class="db-title"><span class="db-title-icon" aria-hidden="true">{{ m.icon('unlock', 18) }}</span><h2>Open access</h2><p class="muted">Free to download — no approval needed</p></div>
+      <h2>Open access</h2>
+      <p class="muted">Free to download, no approval needed.</p>
       <div class="dataset-list">
-        {% for d in open_sets %}{{ m.dataset_card(d) }}{% else %}<p class="empty empty--plain">No open-access datasets yet.</p>{% endfor %}
+        {% for d in open_sets %}{{ m.dataset_card(d) }}{% else %}<p class="muted">No open-access datasets yet.</p>{% endfor %}
       </div>
     </div>
 
     <div class="db-section" data-db-section="restricted">
-      <div class="db-title db-title--restricted"><span class="db-title-icon" aria-hidden="true">{{ m.icon('lock', 18) }}</span><h2>Restricted access</h2><p class="muted">Available after an access request is approved</p></div>
-      <div class="callout">
-        <p><strong>How to request access</strong><br>
-          Sign in, then fill out the access request form. Questions? Contact <strong class="placeholder">[Data access coordinator name]</strong> at {% if data.site.contact.data_access %}<a href="mailto:{{ data.site.contact.data_access }}">{{ data.site.contact.data_access }}</a>{% else %}<span class="placeholder">[data-access email to be confirmed]</span>{% endif %}.</p>
-        {{ m.action('Open access request form', data.site.links.access_request_form, 'amber') }}
+      <h2>Restricted access</h2>
+      <p class="muted">Available after an access request is approved.</p>
+      <div class="note">
+        <p><strong>How to request access.</strong> Sign in, then fill out the access request form. Questions? Contact <span class="placeholder">[Data access coordinator name]</span> at {% if data.site.contact.data_access %}<a href="mailto:{{ data.site.contact.data_access }}">{{ data.site.contact.data_access }}</a>{% else %}<span class="placeholder">[data-access email to be confirmed]</span>{% endif %}.</p>
       </div>
+      <p>{{ m.action('Open access request form', data.site.links.access_request_form, 'outline') }}</p>
       <div class="dataset-list">
-        {% for d in restricted_sets %}{{ m.dataset_card(d) }}{% else %}<p class="empty empty--plain">No restricted datasets yet.</p>{% endfor %}
+        {% for d in restricted_sets %}{{ m.dataset_card(d) }}{% else %}<p class="muted">No restricted datasets yet.</p>{% endfor %}
       </div>
     </div>
 
-    <div class="empty empty--filters" data-db-empty hidden>
-      <div><h3>No datasets match</h3><p>Try a different search, or clear the filters.</p></div>
+    <div class="empty" data-db-empty hidden>
+      <p><strong>No datasets match.</strong> Try a different search, or clear the filters.</p>
       <button class="btn btn--outline" type="button" data-db-clear>Clear filters</button>
     </div>
   </div>
@@ -85,15 +80,11 @@
 
 <section class="section">
   <div class="container">
-    <div class="band">
-      <div>
-        <h2>Have feedback, or data to share?</h2>
-        <p>Tell us what’s missing or what could be better — or offer a dataset of your own to grow the collection.</p>
-      </div>
-      <div class="btn-row">
-        {{ m.action('Leave feedback', data.site.links.feedback_form, 'outline') }}
-        {{ m.mail_action('Add your data', data.site.contact.general, 'primary') }}
-      </div>
+    <h2>Have feedback, or data to share?</h2>
+    <p class="muted">Tell us what’s missing or what could be better, or offer a dataset of your own.</p>
+    <div class="btn-row">
+      {{ m.action('Leave feedback', data.site.links.feedback_form, 'outline') }}
+      {{ m.mail_action('Add your data', data.site.contact.general, 'outline') }}
     </div>
   </div>
 </section>

@@ -5,9 +5,8 @@
 {% block body_class %}page-research{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">Research</p>
     <h1>Any animal, any disease, any task</h1>
     <p class="lead">VETNET’s research has two goals: give researchers the veterinary data they need to do good work, and give the field live benchmarks to measure that work against.</p>
   </div>
@@ -20,62 +19,62 @@
 <section class="section">
   <div class="container">
     <h2>Our research</h2>
-    <div class="goal-grid">
-      <article class="card goal">
-        <h3><span class="goal-num" aria-hidden="true">1</span>Providing data for good research</h3>
+    <div class="cols cols-2">
+      <article>
+        <h3>Providing data for good research</h3>
         <p>Veterinary data spans many species, comes in many formats, and faces different legal and regulatory barriers than human health data. We work with partners to collect, de-identify and document it to one shared standard, so researchers can spend their time on science rather than data wrangling.</p>
       </article>
-      <article class="card goal">
-        <h3><span class="goal-num" aria-hidden="true">2</span>Benchmarks, competitions and papers</h3>
+      <article>
+        <h3>Benchmarks, competitions and papers</h3>
         <p>VETNET is designed as an ecosystem of <em>live</em> benchmarks: tasks that grow with new data, open competitions that compare methods fairly, and published results that make progress in veterinary AI visible to everyone.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section section--tight-top">
+<section class="section">
   <div class="container">
-    <div class="starting">
+    <h2>Where we’re starting</h2>
+    <p class="muted">Our first focus is medical imaging in DICOM format. We will extend to other data types as the initiative grows.</p>
+    <div class="cols cols-2">
       <div>
-        <h2>Where we’re starting</h2>
-        <p>Our first focus is medical imaging in DICOM format. We will extend to other data types as the initiative grows.</p>
+        <h3>Now</h3>
+        <ul class="plain-list">
+          <li>CT scans (DICOM)</li>
+          <li>Radiographs (DICOM)</li>
+        </ul>
       </div>
       <div>
-        <h3 class="starting-label">Now</h3>
-        <ul class="chips chips--solid">
-          <li class="chip chip--solid">CT scans <small>DICOM</small></li>
-          <li class="chip chip--solid">Radiographs <small>DICOM</small></li>
-        </ul>
-        <h3 class="starting-label">Coming soon</h3>
-        <ul class="chips">
-          <li class="chip chip--dashed">Free-text clinical notes</li>
-          <li class="chip chip--dashed">Tabular records</li>
-          <li class="chip chip--dashed">And more</li>
+        <h3>Coming soon</h3>
+        <ul class="plain-list">
+          <li>Free-text clinical notes</li>
+          <li>Tabular records</li>
+          <li>And more</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--tight-top">
+<section class="section">
   <div class="container">
-    <div class="section-head section-head--inline">
+    <div class="section-head">
       <h2>Where it began</h2>
-      <p>The Cornell Thought Summit, June 9–11, 2026 · College of Veterinary Medicine, Ithaca, NY</p>
+      <p>The Cornell Thought Summit, June 9–11, 2026, College of Veterinary Medicine, Ithaca, NY.</p>
     </div>
-    <ul class="grid-3">
-      <li class="card info-card">
-        <p class="eyebrow">Day 1 · June 9</p>
-        <h3>What is — and what can become</h3>
+    <ul class="cols cols-3">
+      <li>
+        <p class="small muted">Day 1 · June 9</p>
+        <h3>What is, and what can become</h3>
         <p>Keynotes from P-J Noble (Liverpool) on veterinary benchmarks today, Heather Whitney (Chicago) on lessons from human medical imaging, and Kilian Weinberger (Cornell) on datasets in the age of foundation models.</p>
       </li>
-      <li class="card info-card">
-        <p class="eyebrow">Day 2 · June 10</p>
+      <li>
+        <p class="small muted">Day 2 · June 10</p>
         <h3>Designing VETNET 1.0</h3>
         <p>Group sessions on what VETNET should be, panels on ethical and legal compliance and on trustworthy benchmark repositories, and a first draft of the ecosystem framework.</p>
       </li>
-      <li class="card info-card">
-        <p class="eyebrow">Day 3 · June 11</p>
+      <li>
+        <p class="small muted">Day 3 · June 11</p>
         <h3>Whitepaper and public panel</h3>
         <p>Synthesis and whitepaper drafting, then a public panel on the veterinary AI ecosystem.</p>
       </li>
@@ -83,47 +82,42 @@
   </div>
 </section>
 
-<section class="section section--tight-top" id="publications">
+<section class="section" id="publications">
   <div class="container">
     <h2>Publications by VETNET</h2>
     {% for pub in data.publications %}
-    <article class="card pub">
-      <div class="pub-head">
-        <p class="pub-meta">
-          <span class="badge badge--solid">{{ pub.type }}</span>
-          {% if pub.arxiv_id %}arXiv:{{ pub.arxiv_id }} · {% endif %}{{ pub.date_label }}{% if loop.first %} · {{ stats.collaborators_total }} co-authors from {{ stats.organizations }} organizations{% endif %}
-        </p>
-        <div class="btn-row">
-          {{ m.action('Read on arXiv', pub.url, 'primary') }}
-          <a class="btn btn--outline" href="#cite">Cite</a>
-        </div>
-      </div>
+    <article class="pub">
+      <p class="pub-meta">{{ pub.type }} · {% if pub.arxiv_id %}arXiv:{{ pub.arxiv_id }} · {% endif %}{{ pub.date_label }}{% if loop.first %} · {{ stats.collaborators_total }} co-authors from {{ stats.organizations }} organizations{% endif %}</p>
       <h3>{{ pub.title }}</h3>
       <p>{{ pub.summary }} {% if pub.abstract_placeholder %}<span class="placeholder">{{ pub.abstract_placeholder }}</span>{% endif %}</p>
       {% if loop.first %}
-      <div class="authors">
-        <p class="eyebrow">Authors</p>
+      <details class="authors">
+        <summary>Authors</summary>
         <p>{{ data.authors|join(', ') }}</p>
-      </div>
+      </details>
       {% endif %}
+      <div class="btn-row">
+        {{ m.action('Read on arXiv', pub.url, 'primary') }}
+        <a class="btn btn--outline" href="#cite">Cite</a>
+      </div>
     </article>
     {% endfor %}
-    <p class="empty empty--plain">More publications coming soon.</p>
+    <p class="muted">More publications coming soon.</p>
   </div>
 </section>
 
-<section class="section section--tight-top" id="cite">
+<section class="section" id="cite">
   <div class="container cite-layout">
     <div>
       <h2>How to cite VETNET</h2>
       <p class="muted">If you use VETNET data or benchmarks in your work, please cite our whitepaper.</p>
     </div>
     <div>
-      <p class="card cite-text">{{ wp.cite_text }} {% if wp.cite_note %}<span class="placeholder muted">{{ wp.cite_note }}</span>{% endif %}</p>
+      <p class="cite-text">{{ wp.cite_text }} {% if wp.cite_note %}<span class="placeholder muted">{{ wp.cite_note }}</span>{% endif %}</p>
       <div class="code-block">
         <div class="code-head">
           <span>BibTeX</span>
-          <button class="btn btn--ghost-light btn--sm js-only" type="button" data-copy="#bibtex">{{ m.icon('copy', 16) }}<span data-copy-label>Copy</span></button>
+          <button class="btn btn--outline btn--sm js-only" type="button" data-copy="#bibtex"><span data-copy-label>Copy</span></button>
         </div>
         <pre><code id="bibtex">{{ wp.bibtex }}</code></pre>
       </div>
@@ -131,16 +125,11 @@
   </div>
 </section>
 
-<section class="section section--tight-top">
+<section class="section">
   <div class="container">
     <h2>Publications using VETNET data</h2>
-    <div class="empty">
-      <div>
-        <h3>Coming soon</h3>
-        <p>Published work that uses VETNET datasets will be listed here. Used our data in a paper? Let us know and we’ll add it.</p>
-      </div>
-      {{ m.mail_action('Submit a publication', data.site.contact.general, 'outline') }}
-    </div>
+    <p class="muted">Coming soon. Published work that uses VETNET datasets will be listed here. Used our data in a paper? Let us know and we’ll add it.</p>
+    {{ m.mail_action('Submit a publication', data.site.contact.general, 'outline') }}
   </div>
 </section>
 {% endblock %}
