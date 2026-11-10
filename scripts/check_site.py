@@ -206,7 +206,7 @@ def check_home_stats():
 
 def main():
     if not OUTPUT.is_dir():
-        print("output/ not found. Run `make build` first.", file=sys.stderr)
+        print("output/ not found. Run `yarn build` first.", file=sys.stderr)
         return 2
     check_files()
     check_pages()

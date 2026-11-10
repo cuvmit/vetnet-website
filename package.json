@@ -1,0 +1,15 @@
+{
+  "name": "vetnet-website",
+  "version": "0.0.0",
+  "private": true,
+  "description": "VETNET website (Pelican static site)",
+  "scripts": {
+    "postinstall": "uv sync",
+    "start": "uv run pelican content -s pelicanconf.py --autoreload --listen --port ${PORT:-8000}",
+    "build": "uv run pelican content -s publishconf.py",
+    "test": "uv run pelican content -s pelicanconf.py && uv run python scripts/check_site.py",
+    "clean": "rm -rf output cache",
+    "deploy:sb": "SITEURL=https://vetnet-sb.vmit.cucloud.net yarn build && aws s3 sync output/ s3://vetnet-sb.vmit.cucloud.net --delete",
+    "deploy:prod": "yarn build && aws s3 sync output/ s3://vetnet-prod.vmit.cucloud.net --delete"
+  }
+}
