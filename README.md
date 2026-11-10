@@ -58,7 +58,7 @@ Deploys upload the built site to S3 with the AWS CLI, using the AWS credentials 
 | Environment | Command | S3 bucket | Site URL used in links |
 |---|---|---|---|
 | Sandbox | `yarn deploy:sb` | `vetnet-sb.vmit.cucloud.net` | `https://vetnet-sb.vmit.cucloud.net` |
-| Production | `yarn deploy:prod` | `vetnet-prod.vmit.cucloud.net` | `https://vetnet.org` (placeholder, set in `publishconf.py`) |
+| Production | `yarn deploy:prod` | `vetnet-prod.vmit.cucloud.net` | `https://vetnet.vmit.cucloud.net` (set in `yarn deploy:prod`; switch to `https://vetnet.org` once that domain points at CloudFront) |
 
 Steps:
 
@@ -76,7 +76,7 @@ Things to know:
 
 - The upload uses `aws s3 sync --delete`, so files in the bucket that are not in `output/` are removed.
 - `publishconf.py` reads the `SITEURL` environment variable (default `https://vetnet.org`). `yarn deploy:sb` sets it so sandbox pages link to the sandbox rather than production.
-- Deploys do not invalidate a CDN cache. If CloudFront sits in front of a bucket, changes may take a while to appear unless you run `aws cloudfront create-invalidation`.
+- After the upload, each deploy runs `aws cloudfront create-invalidation --paths '/*'` against that environment's CloudFront distribution (sandbox `E2VKLN32FGP0K3`, production `E191HYOQDGRN3L`), so changes show up without waiting for the cache to expire.
 
 ## Pages
 
