@@ -5,9 +5,8 @@
 {% block body_class %}page-about{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">About</p>
     <h1>An open network for veterinary data and the people who use it</h1>
   </div>
 </section>
@@ -18,22 +17,21 @@
 <section class="section" aria-labelledby="mission-title">
   <div class="container mission">
     <div>
-      <p class="eyebrow">Our mission</p>
       <h2 id="mission-title">Why VETNET exists</h2>
     </div>
     <div>
       <p class="mission-lead">VETNET builds an ecosystem of live benchmarks for AI in veterinary medicine — for any animal, any disease, any task.</p>
       <p>Veterinary data covers companion animals and food-producing species, comes in many formats, and faces different legal and regulatory barriers than human health data, with no central body to standardize it. VETNET brings veterinary medicine, computer science, ethics and law together to create standardized, high-quality datasets and the benchmarks that let the field measure real progress — for animals, veterinary professionals, One Health and society.</p>
-      <ul class="values">
-        <li class="card"><h3>Open by default</h3><p>Data and benchmarks shared as openly as privacy and ownership allow.</p></li>
-        <li class="card"><h3>Rigorous</h3><p>Consistent standards, clear documentation and fair evaluation.</p></li>
-        <li class="card"><h3>Collaborative</h3><p>Built jointly by academia, clinics, industry and regulators.</p></li>
+      <ul class="cols cols-3">
+        <li><h3>Open by default</h3><p class="muted">Data and benchmarks shared as openly as privacy and ownership allow.</p></li>
+        <li><h3>Rigorous</h3><p class="muted">Consistent standards, clear documentation and fair evaluation.</p></li>
+        <li><h3>Collaborative</h3><p class="muted">Built jointly by academia, clinics, industry and regulators.</p></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="section section--bordered" aria-labelledby="story-title">
+<section class="section" aria-labelledby="story-title">
   <div class="container">
     <h2 id="story-title">Our story so far</h2>
     <ol class="timeline">
@@ -48,15 +46,14 @@
   </div>
 </section>
 
-<section class="section section--white section--bordered" aria-labelledby="faq-title">
+<section class="section section--white" aria-labelledby="faq-title">
   <div class="container faq-layout">
     <div>
-      <p class="eyebrow">FAQ</p>
       <h2 id="faq-title">Frequently asked questions</h2>
     </div>
     <div class="faq">
       {% for item in data.faq %}
-      <details class="faq-item" open>
+      <details class="faq-item">
         <summary>{{ item.question }}</summary>
         <div class="faq-answer">
           <p>{{ item.answer|replace('@SITEURL@', SITEURL)|replace('@COLLABORATORS@', stats.collaborators_total|string)|replace('@ORGANIZATIONS@', stats.organizations|string)|replace('@WHITEPAPER@', data.site.links.whitepaper)|safe }}{% if item.email_placeholder %} <span class="placeholder">{{ item.email_placeholder }}</span>{% endif %}</p>

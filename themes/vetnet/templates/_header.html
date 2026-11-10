@@ -4,14 +4,8 @@
 <div class="banner" role="region" aria-label="Announcement">
   <div class="container">
     <p>
-      <span class="badge">{{ site.banner.badge }}</span>
-      <span>{{ site.banner.message }}</span>
-      {{ m.text_link(site.banner.link_label ~ ' →', site.banner.link) }}
-    </p>
-    <span class="banner-sep" aria-hidden="true">|</span>
-    <p>
-      <span>{{ site.banner.survey_message }}</span>
-      {{ m.text_link(site.banner.survey_label ~ ' →', site.links.survey) }}
+      <span>{{ site.banner.message }} {{ m.text_link(site.banner.link_label, site.banner.link) }}</span>
+      <span>{{ site.banner.survey_message }} {{ m.text_link(site.banner.survey_label, site.links.survey) }}</span>
     </p>
   </div>
 </div>
@@ -25,15 +19,15 @@
         <span class="brand-tag">Open data for veterinary AI</span>
       </span>
     </a>
-    <button class="btn btn--outline btn--sm menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">{{ m.icon('menu') }}Menu</button>
+    <button class="btn btn--outline btn--sm menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
     <nav class="main-nav" id="main-nav" aria-label="Main">
       <ul>
         {% for item in data.nav.header %}
-        <li><a href="{{ SITEURL }}{{ item.url }}"{% if item.url.strip('/') == current_slug %} aria-current="page"{% endif %}>{% if item.icon %}{{ m.icon(item.icon, 15) }}{% endif %}{{ item.label }}</a></li>
+        <li><a href="{{ SITEURL }}{{ item.url }}"{% if item.url.strip('/') == current_slug %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {% endfor %}
-        <li class="nav-portal"><a href="{{ SITEURL }}/portal/"{% if current_slug == 'portal' %} aria-current="page"{% endif %}>{{ m.icon('login', 15) }}Portal · Log in</a></li>
+        <li class="nav-portal"><a href="{{ SITEURL }}/portal/"{% if current_slug == 'portal' %} aria-current="page"{% endif %}>Portal · Log in</a></li>
       </ul>
     </nav>
-    <a class="btn btn--primary header-cta" href="{{ SITEURL }}/portal/">{{ m.icon('login') }}Portal · Log in</a>
+    <a class="btn btn--primary header-cta" href="{{ SITEURL }}/portal/">Portal · Log in</a>
   </div>
 </header>

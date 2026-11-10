@@ -1,22 +1,23 @@
 # Partner organizations, in the order shown on the Home page.
 # type: University | Industry | Clinical | Nonprofit | Government
-- {name: Cornell University, type: University, country: USA}
-- {name: Weill Cornell Medicine, type: University, country: USA}
-- {name: Colorado State University, type: University, country: USA}
-- {name: University of Chicago, type: University, country: USA}
-- {name: University of Florida, type: University, country: USA}
-- {name: University of Liverpool, type: University, country: UK}
-- {name: University of Leeds, type: University, country: UK}
-- {name: University of Padua, type: University, country: Italy}
-- {name: University of Melbourne, type: University, country: Australia}
-- {name: City University of Hong Kong, type: University, country: Hong Kong}
-- {name: IDEXX, type: Industry, country: USA}
-- {name: Mars Veterinary Health, type: Industry, country: USA}
-- {name: AWS Open Data, type: Industry, country: USA}
-- {name: VetApp, type: Industry, country: Poland}
-- {name: Vet Validaite, type: Industry, country: UK}
-- {name: ANI.ML, type: Industry, country: Canada}
-- {name: Schwarzman Animal Medical Center, type: Clinical, country: USA}
-- {name: Toronto Animal Cancer Centre, type: Clinical, country: Canada}
-- {name: Foundation for Food & Agriculture Research, type: Nonprofit, country: USA}
-- {name: U.S. FDA Center for Veterinary Medicine, type: Government, country: USA}
+# logo: path under content/images/ (optional); url: partner website (optional)
+- {name: Cornell University, type: University, country: USA, logo: partners/cornell-university.png, url: "https://www.cornell.edu"}
+- {name: Weill Cornell Medicine, type: University, country: USA, logo: partners/weill-cornell-medicine.svg, url: "https://weill.cornell.edu"}
+- {name: Colorado State University, type: University, country: USA, logo: partners/colorado-state-university.png, url: "https://www.colostate.edu"}
+- {name: University of Chicago, type: University, country: USA, logo: partners/university-of-chicago.png, url: "https://www.uchicago.edu"}
+- {name: University of Florida, type: University, country: USA, logo: partners/university-of-florida.png, url: "https://www.ufl.edu"}
+- {name: University of Liverpool, type: University, country: UK, logo: partners/university-of-liverpool.svg, url: "https://www.liverpool.ac.uk"}
+- {name: University of Leeds, type: University, country: UK, logo: partners/university-of-leeds.svg, url: "https://www.leeds.ac.uk"}
+- {name: University of Padua, type: University, country: Italy, logo: partners/university-of-padua.png, url: "https://www.unipd.it"}
+- {name: University of Melbourne, type: University, country: Australia, logo: partners/university-of-melbourne.png, url: "https://www.unimelb.edu.au"}
+- {name: City University of Hong Kong, type: University, country: Hong Kong, logo: partners/city-university-of-hong-kong.png, url: "https://www.cityu.edu.hk"}
+- {name: IDEXX, type: Industry, country: USA, logo: partners/idexx.svg, url: "https://www.idexx.com"}
+- {name: Mars Veterinary Health, type: Industry, country: USA, logo: partners/mars-veterinary-health.png, url: "https://www.marsveterinary.com"}
+- {name: AWS Open Data, type: Industry, country: USA, logo: partners/aws-open-data.png, url: "https://registry.opendata.aws"}
+- {name: VetApp, type: Industry, country: Poland, logo: partners/vetapp.png, url: "https://www.vetapp.app"}
+- {name: Vet Validaite, type: Industry, country: UK, logo: partners/vet-validaite.png, url: "https://www.vetvalidaite.com"}
+- {name: ANI.ML, type: Industry, country: Canada, logo: partners/ani-ml.png, url: "https://www.animl.health"}
+- {name: Schwarzman Animal Medical Center, type: Clinical, country: USA, logo: partners/schwarzman-animal-medical-center.jpg, url: "https://www.amcny.org"}
+- {name: Toronto Animal Cancer Centre, type: Clinical, country: Canada, logo: partners/toronto-animal-cancer-centre.png, url: "https://www.torontoacc.com"}
+- {name: Foundation for Food & Agriculture Research, type: Nonprofit, country: USA, logo: partners/ffar.png, url: "https://foundationfar.org"}
+- {name: U.S. FDA Center for Veterinary Medicine, type: Government, country: USA, logo: partners/fda-cvm.png, url: "https://www.fda.gov/animal-veterinary"}

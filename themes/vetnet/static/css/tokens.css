@@ -21,36 +21,32 @@
 }
 
 :root {
-  --red: #b31b1b;
-  --red-dark: #8f1515;
+  --accent: #b31b1b;
+  --accent-dark: #8f1515;
   --carnelian: #6e1414;
   --blush: #f7e6e4;
   --pink: #f6c9c4;
-  --bg: #f7f6f2;
-  --card: #ffffff;
-  --text: #3b3733;
+  --ink: #3b3733;
   --muted: #6a645e;
-  --border: #e4e0d9;
-  --amber-bg: #f6e8d7;
-  --amber-fg: #7a4a1a;
-  --amber-border: #e6cfae;
+  --rule: #e4e0d9;
+  --field: #c9c3ba;
+  --bg: #f7f6f2;
+  --bg-alt: #ffffff;
 
   --font-heading: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --container: 1320px;
+  --container: 1120px;
   --gutter: 24px;
-  --space-section: 60px;
-  --radius: 10px;
-  --radius-lg: 16px;
+  --space-section: 64px;
+  --radius: 3px;
   --tap: 44px;
-  --shadow: 0 1px 2px rgba(59, 55, 51, 0.05);
 }
 
 @media (max-width: 700px) {
   :root {
     --gutter: 16px;
-    --space-section: 44px;
+    --space-section: 48px;
   }
 }

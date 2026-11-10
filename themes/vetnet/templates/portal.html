@@ -12,12 +12,11 @@
 <section class="section">
   <div class="container">
     <div class="portal-head">
-      <p class="eyebrow">Member portal</p>
       <h1>Sign in or create your free account</h1>
-      <p class="pill-note">{{ m.icon('check', 16) }} Registration is free and open to everyone — students, researchers, clinicians and industry.</p>
+      <p class="muted">Registration is free and open to everyone: students, researchers, clinicians and industry.</p>
     </div>
     <div class="portal-grid">
-      <form class="card form-card" data-preview-form aria-labelledby="signin-title">
+      <form class="form-card" data-preview-form aria-labelledby="signin-title">
         <h2 id="signin-title">Sign in</h2>
         <p class="muted">Already a member? Welcome back.</p>
         <div class="field"><label for="si-email">Email</label><input class="input" id="si-email" name="email" type="email" placeholder="you@institution.edu" autocomplete="username"></div>
@@ -32,7 +31,7 @@
         {{ m.form_status() }}
       </form>
 
-      <form class="card form-card" data-preview-form aria-labelledby="register-title">
+      <form class="form-card" data-preview-form aria-labelledby="register-title">
         <h2 id="register-title">Register</h2>
         <p class="muted">New to VETNET? It takes a minute and costs nothing.</p>
         <div class="field-row">
@@ -51,15 +50,15 @@
         </div>
         <div class="field"><label for="rg-password">Password</label><input class="input" id="rg-password" name="password" type="password" autocomplete="new-password"></div>
         <label class="checkbox"><input type="checkbox" name="agree"> <span>I agree to the {{ m.text_link('data use terms', None, 'placeholder') }} and <a href="{{ SITEURL }}/privacy/">privacy policy</a>.</span></label>
-        <p class="notice notice--inline">{{ m.icon('mail', 16) }} New members are added to the VETNET e-list automatically. You can unsubscribe anytime.</p>
+        <p class="form-note">New members are added to the VETNET e-list automatically. You can unsubscribe anytime.</p>
         <button class="btn btn--primary btn--block" type="submit">Create free account</button>
         {{ m.form_status() }}
       </form>
     </div>
-    <ul class="grid-3 benefit-tiles">
-      <li class="card benefit">{{ m.icon('database', 20) }}<span>Request access to restricted datasets</span></li>
-      <li class="card benefit">{{ m.icon('users', 20) }}<span>Join working groups and members-only spaces</span></li>
-      <li class="card benefit">{{ m.icon('chat', 20) }}<span>Get early news on datasets and competitions</span></li>
+    <ul class="benefits">
+      <li>Request access to restricted datasets</li>
+      <li>Join working groups and members-only spaces</li>
+      <li>Get early news on datasets and competitions</li>
     </ul>
   </div>
 </section>

@@ -6,12 +6,9 @@
 {% block body_class %}page-article{% endblock %}
 
 {% block hero %}
-<section class="hero hero--page">
+<section class="hero">
   <div class="container">
-    <p class="news-meta">
-      <span class="tag tag--category">{{ article.category }}</span>
-      <span>{{ m.article_date(article) }}{% if article.location is defined and article.location %} · {{ article.location }}{% endif %}</span>
-    </p>
+    <p class="news-meta">{{ article.category }} · {{ m.article_date(article) }}{% if article.location is defined and article.location %} · {{ article.location }}{% endif %}</p>
     <h1>{{ article.title }}</h1>
   </div>
 </section>
@@ -24,7 +21,7 @@
     {% if article.link is defined and article.link %}
     <p>{{ m.action(article.link_label if article.link_label is defined else 'Read more', article.link, 'primary') }}</p>
     {% endif %}
-    <p><a class="link-arrow" href="{{ SITEURL }}/news/">← All news</a></p>
+    <p><a href="{{ SITEURL }}/news/">← All news</a></p>
   </div>
 </section>
 {% endblock %}

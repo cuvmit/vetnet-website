@@ -10,20 +10,17 @@
 
 {% block content %}
 {% set mp = data.member_preview %}
-{% set status_class = {'Published': 'published', 'De-identifying': 'deid', 'Intake review': 'intake'} %}
 <section class="section">
   <div class="container">
     <div class="members-head">
       <div>
-        <p class="eyebrow">{{ m.icon('lock', 14) }} For members</p>
         <h1>Welcome back, <span class="placeholder">{{ mp.welcome.first_name }}</span></h1>
-        <p class="muted"><span class="placeholder">{{ mp.welcome.institution }}</span> · Member since <span class="placeholder">{{ mp.welcome.member_since }}</span> · {{ mp.welcome.team }}
-          {{ m.badge_founding() }} {{ m.badge_donor() }}</p>
+        <p class="muted"><span class="placeholder">{{ mp.welcome.institution }}</span> · Member since <span class="placeholder">{{ mp.welcome.member_since }}</span> · {{ mp.welcome.team }} · Founding member · Data donor</p>
       </div>
-      <p class="notice notice--dashed">Proposed starting point — modules can be added or removed later.</p>
+      <p class="small muted">Proposed starting point. Modules can be added or removed later.</p>
     </div>
 
-    <section class="card donated" aria-labelledby="donated-title">
+    <section class="donated" aria-labelledby="donated-title">
       <div class="donated-head">
         <div>
           <h2 id="donated-title">My donated data</h2>
@@ -34,7 +31,7 @@
           {{ m.action('Donate another dataset', None, 'primary') }}
         </div>
       </div>
-      <ul class="tiles">
+      <ul class="stats-list">
         {% for t in mp.donated.tiles %}<li><span class="stat-value">{% if t.value.startswith('[') %}<span class="placeholder">{{ t.value }}</span>{% else %}{{ t.value }}{% endif %}</span><span class="stat-label">{{ t.label }}</span></li>{% endfor %}
       </ul>
       <div class="table-wrap">
@@ -46,7 +43,7 @@
               <th scope="row"><span class="placeholder">{{ r.name }}</span></th>
               <td>{{ r.type }}</td>
               <td><span class="placeholder">{{ r.contributed }}</span></td>
-              <td><span class="badge badge--status badge--status-{{ status_class[r.status] }}">{{ r.status }}</span></td>
+              <td>{{ r.status }}</td>
               <td>{{ r.access }}</td>
               <td>{% if r.downloads.startswith('[') %}<span class="placeholder">{{ r.downloads }}</span>{% else %}{{ r.downloads }}{% endif %}</td>
               <td>{% if r.cited.startswith('[') %}<span class="placeholder">{{ r.cited }}</span>{% else %}{{ r.cited }}{% endif %}</td>
@@ -57,43 +54,40 @@
       </div>
     </section>
 
-    <div class="grid-3 members-grid">
-      <section class="card info-card" aria-labelledby="req-title">
+    <div class="cols cols-3 members-grid">
+      <section aria-labelledby="req-title">
         <h2 id="req-title">My data access requests</h2>
         <ul class="plain-list">
-          {% for r in mp.requests %}<li><span class="placeholder">{{ r.name }}</span> <span class="badge badge--status badge--status-{{ 'approved' if r.status == 'Approved' else 'review' }}">{{ r.status }}</span></li>{% endfor %}
+          {% for r in mp.requests %}<li><span class="placeholder">{{ r.name }}</span> <span class="muted">{{ r.status }}</span></li>{% endfor %}
         </ul>
-        <p>{{ m.text_link('Request access to a dataset →', None, 'link-arrow') }}</p>
+        <p>{{ m.text_link('Request access to a dataset', None) }}</p>
       </section>
-      <section class="card info-card" aria-labelledby="wg-title">
+      <section aria-labelledby="wg-title">
         <h2 id="wg-title">My working group</h2>
         <h3>{{ mp.working_group.name }}</h3>
-        <p class="next-meeting">{{ m.icon('calendar', 16) }} Next meeting: <span class="placeholder">{{ mp.working_group.next_meeting }}</span></p>
+        <p>Next meeting: <span class="placeholder">{{ mp.working_group.next_meeting }}</span></p>
         <p class="link-row">{% for l in mp.working_group.links %}{{ m.text_link(l, None) }} {% endfor %}</p>
       </section>
-      <section class="card info-card" aria-labelledby="ann-title">
+      <section aria-labelledby="ann-title">
         <h2 id="ann-title">Member announcements</h2>
         <ul class="plain-list">
           {% for a in mp.announcements %}<li><span class="muted placeholder">{{ a.date }}</span><br><span class="placeholder">{{ a.text }}</span></li>{% endfor %}
         </ul>
       </section>
-      <section class="card info-card" aria-labelledby="part-title">
+      <section aria-labelledby="part-title">
         <h2 id="part-title">My participation</h2>
         <p class="muted">What you signed up for when you joined. Change it anytime.</p>
-        <ul class="chips chips--soft">{% for p in mp.participation %}<li class="chip chip--soft">{{ p }}</li>{% endfor %}</ul>
-        <p>{{ m.text_link('Edit my choices →', None, 'link-arrow') }}</p>
+        <ul class="plain-list">{% for p in mp.participation %}<li>{{ p }}</li>{% endfor %}</ul>
+        <p>{{ m.text_link('Edit my choices', None) }}</p>
       </section>
-      <section class="card info-card" aria-labelledby="res-title">
+      <section aria-labelledby="res-title">
         <h2 id="res-title">Resources</h2>
         <ul class="plain-list">{% for r in mp.resources %}<li>{{ m.text_link(r, None) }}</li>{% endfor %}</ul>
       </section>
-      <section class="card info-card signed-out" aria-labelledby="out-title">
+      <section aria-labelledby="out-title">
         <h2 id="out-title">Signed-out view</h2>
-        <div class="signed-out-box">
-          {{ m.icon('lock', 28) }}
-          <p><strong>This area is for VETNET members</strong></p>
-          <a class="btn btn--primary" href="{{ SITEURL }}/portal/">Sign in or register free</a>
-        </div>
+        <p>This area is for VETNET members.</p>
+        <a class="btn btn--primary" href="{{ SITEURL }}/portal/">Sign in or register</a>
       </section>
     </div>
   </div>
