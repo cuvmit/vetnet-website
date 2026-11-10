@@ -14,38 +14,69 @@ You need:
 
 - [Git](https://git-scm.com/downloads)
 - [uv](https://docs.astral.sh/uv/getting-started/installation/), which installs the right Python version and all dependencies for you
+- [Node.js](https://nodejs.org/) and [Yarn](https://classic.yarnpkg.com/), which run the project commands
+- [AWS CLI](https://aws.amazon.com/cli/), only needed to deploy
 
 Then:
 
 ```bash
 git clone git@github.com:cuvmit/vetnet-website.git
 cd vetnet-website
-make install
-make serve
+yarn install
+yarn start
 ```
 
-Open <http://localhost:8000>. Leave `make serve` running: when you save a file, the site rebuilds automatically (refresh the browser to see the change). Press `Ctrl+C` to stop it.
+Open <http://localhost:8000>. Leave `yarn start` running: when you save a file, the site rebuilds automatically (refresh the browser to see the change). Press `Ctrl+C` to stop it.
 
-No `make` (for example on Windows)? Run the commands behind each target directly:
+No Yarn? Run the commands behind each script directly:
 
 ```bash
 uv sync
 uv run pelican content -s pelicanconf.py --autoreload --listen
 ```
 
+(`yarn build`, `yarn test` and the deploy scripts are defined in `package.json`.)
+
 ## Common commands
 
 | Command | What it does |
 |---|---|
-| `make` | Lists the available commands |
-| `make install` | Creates `.venv/` and installs dependencies |
-| `make build` | Builds the site into `output/` |
-| `make serve` | Builds, serves at <http://localhost:8000>, and rebuilds when files change |
-| `make check` | Builds, then checks every link, page title, placeholder and count in `output/` |
-| `make publish` | Builds with production settings (full `https://` URLs) into `output/` |
-| `make clean` | Deletes `output/` and `cache/` |
+| `yarn install` | Installs dependencies (creates `.venv/` via `uv sync`) |
+| `yarn start` | Builds, serves at <http://localhost:8000>, and rebuilds when files change |
+| `yarn build` | Builds with production settings (full `https://` URLs) into `output/` |
+| `yarn test` | Builds with development settings, then checks every link, page title, placeholder and count in `output/` |
+| `yarn clean` | Deletes `output/` and `cache/` |
+| `yarn deploy:sb` | Builds, then syncs `output/` to the `vetnet-sb.vmit.cucloud.net` S3 bucket |
+| `yarn deploy:prod` | Builds, then syncs `output/` to the `vetnet-prod.vmit.cucloud.net` S3 bucket |
 
-Run `make check` before you open a pull request. It fails with a list of problems if a link is broken, a page is missing a title, or the counts on the home page don't match the data.
+Run `yarn test` before you open a pull request. It fails with a list of problems if a link is broken, a page is missing a title, or the counts on the home page don't match the data.
+
+## Deploying
+
+Deploys upload the built site to S3 with the AWS CLI, using the AWS credentials in your terminal.
+
+| Environment | Command | S3 bucket | Site URL used in links |
+|---|---|---|---|
+| Sandbox | `yarn deploy:sb` | `vetnet-sb.vmit.cucloud.net` | `https://vetnet-sb.vmit.cucloud.net` |
+| Production | `yarn deploy:prod` | `vetnet-prod.vmit.cucloud.net` | `https://vetnet.vmit.cucloud.net` (set in `yarn deploy:prod`; switch to `https://vetnet.org` once that domain points at CloudFront) |
+
+Steps:
+
+```bash
+aws sso login                  # if your credentials have expired
+aws sts get-caller-identity    # optional: confirm you are in the right account
+yarn test                      # optional: check the site first
+yarn deploy:sb                 # deploy to the sandbox and look it over
+yarn deploy:prod               # then deploy to production
+```
+
+Each deploy script rebuilds the site first, so you don't need to run `yarn build` yourself.
+
+Things to know:
+
+- The upload uses `aws s3 sync --delete`, so files in the bucket that are not in `output/` are removed.
+- `publishconf.py` reads the `SITEURL` environment variable (default `https://vetnet.org`). `yarn deploy:sb` sets it so sandbox pages link to the sandbox rather than production.
+- After the upload, each deploy runs `aws cloudfront create-invalidation --paths '/*'` against that environment's CloudFront distribution (sandbox `E2VKLN32FGP0K3`, production `E191HYOQDGRN3L`), so changes show up without waiting for the cache to expire.
 
 ## Pages
 
@@ -68,7 +99,7 @@ Templates are in `themes/vetnet/templates/`.
 
 ```
 .
-├── Makefile             Shortcut commands (see above)
+├── package.json         Shortcut commands (see above)
 ├── pyproject.toml       Python dependencies
 ├── uv.lock              Exact dependency versions (commit changes to this)
 ├── pelicanconf.py       Site settings for development
@@ -77,7 +108,7 @@ Templates are in `themes/vetnet/templates/`.
 ├── plugins/
 │   └── vetnet_data.py   Loads data/*.yml, checks it, and computes the live counts
 ├── scripts/
-│   └── check_site.py    The checker behind `make check`
+│   └── check_site.py    The checker behind `yarn test`
 ├── content/
 │   ├── pages/           One Markdown file per page (title, URL, template, summary)
 │   ├── news/            News and events articles, one Markdown file each
@@ -149,7 +180,7 @@ Pages are Markdown files in `content/pages/`. Most pages take their layout from 
 
 ### Change the look of the site
 
-Colors, fonts and spacing are CSS variables in `themes/vetnet/static/css/tokens.css`. Component styles are in `components.css` and page styles in `pages.css`. Preview changes with `make serve`.
+Colors, fonts and spacing are CSS variables in `themes/vetnet/static/css/tokens.css`. Component styles are in `components.css` and page styles in `pages.css`. Preview changes with `yarn start`.
 
 ## Content to fill in
 
@@ -182,7 +213,7 @@ The site loads nothing from other websites (fonts are included in the repo).
 
 1. Create a branch from `main`. Suggested names: `content/<topic>`, `feature/<topic>`, `fix/<topic>`.
 2. Make small, focused commits with clear messages.
-3. Preview your change locally with `make serve`, and run `make check`.
+3. Preview your change locally with `yarn start`, and run `yarn test`.
 4. Open a pull request against `main`. Describe what changed and why, and include a screenshot for visual changes.
 5. Ask at least one other contributor to review it. Please don't push straight to `main`.
 
@@ -193,8 +224,8 @@ For anything large, such as a new section of the site, open an issue or discussi
 ## Troubleshooting
 
 - **`uv: command not found`**: install uv using the [instructions](https://docs.astral.sh/uv/getting-started/installation/), then open a new terminal.
-- **Port 8000 is already in use**: run `make serve PORT=8001` and open <http://localhost:8001>.
-- **The site looks out of date or odd**: run `make clean`, then `make build`.
+- **Port 8000 is already in use**: run `PORT=8001 yarn start` and open <http://localhost:8001>.
+- **The site looks out of date or odd**: run `yarn clean`, then `yarn build`.
 - **The build stops with `DataError: data/...yml: entry N (...)`**: that entry in the data file is missing a required field or has a value that isn't allowed. The message says which one.
 - **YAML errors**: values containing a colon (`:`) must be in quotes, for example `title: "Part 1: Overview"`.
 
