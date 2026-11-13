@@ -25,9 +25,7 @@
         {% for item in data.nav.header %}
         <li><a href="{{ SITEURL }}{{ item.url }}"{% if item.url.strip('/') == current_slug %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {% endfor %}
-        <li class="nav-portal"><a href="{{ SITEURL }}/portal/"{% if current_slug == 'portal' %} aria-current="page"{% endif %}>Portal · Log in</a></li>
       </ul>
     </nav>
-    <a class="btn btn--primary header-cta" href="{{ SITEURL }}/portal/">Portal · Log in</a>
   </div>
 </header>
