@@ -175,7 +175,7 @@
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--carnelian); text-decoration: none; }
 .brand:hover { color: var(--carnelian); }
-.brand-mark { flex: none; width: 44px; height: 44px; }
+.brand-mark { flex: none; width: auto; height: 56px; }
 .brand-name { display: block; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; letter-spacing: 0.04em; line-height: 1.1; }
 .brand-tag { display: block; font-size: 0.8rem; color: var(--muted); }
 .main-nav ul { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; padding: 0; list-style: none; }
@@ -215,12 +215,9 @@
 @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
 .footer-brand .brand { color: #fff; }
 .footer-brand .brand:hover { color: #fff; }
-.footer-brand .brand-mark { width: 40px; height: 40px; }
+.footer-brand .brand-mark { width: auto; height: 56px; background: #fff; border-radius: 8px; padding: 4px; }
 .footer-brand .brand-name { font-size: 1.2rem; }
 .footer-brand p { margin-top: 14px; color: #fdeceb; max-width: 32ch; }
-.site-footer .brand-mark rect { fill: #fff; }
-.site-footer .brand-mark path { stroke: var(--accent); }
-.site-footer .brand-mark circle { fill: var(--accent); }
 .footer-title { margin: 0 0 12px; color: var(--pink); font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .footer-list { margin: 0; padding: 0; list-style: none; }
 .footer-list li { margin-bottom: 6px; }

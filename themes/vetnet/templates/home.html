@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {%- import "_macros.html" as m with context -%}
 {% set stats = data.stats %}
-{% block title %}VETNET | Open data for veterinary AI{% endblock %}
+{% block title %}VETNET | Benchmark datasets for veterinary AI{% endblock %}
 {% block description %}{{ page.summary|striptags }}{% endblock %}
 {% block body_class %}page-home{% endblock %}
 
@@ -10,7 +10,7 @@
   <div class="container hero-grid">
     <div>
       <h1>Shared data to move veterinary AI forward</h1>
-      <p class="lead">VETNET is building an ecosystem of live benchmarks for AI in veterinary medicine: any animal, any disease, any task. Launched at a 2026 Cornell Thought Summit, it brings together universities, industry and regulators to create open, well-documented datasets, starting with CT and radiograph imaging.</p>
+      <p class="lead">VETNET is building an ecosystem of live benchmarks for AI in veterinary medicine: any animal, any disease, any responsible task. Launched at a 2026 Cornell AI Thought Summit, it brings together universities, industry and regulators to create open, well-documented datasets, starting with CT and radiograph imaging.</p>
       <div class="btn-row hero-actions">
         <a class="btn btn--primary" href="{{ SITEURL }}/about/">About VETNET</a>
         <a class="btn btn--outline" href="{{ SITEURL }}/databases/">Browse datasets</a>

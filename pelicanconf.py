@@ -1,6 +1,6 @@
 AUTHOR = "VETNET"
 SITENAME = "VETNET"
-SITESUBTITLE = "Open data for veterinary AI"
+SITESUBTITLE = "Benchmark datasets for veterinary AI"
 SITEURL = ""
 
 TIMEZONE = "UTC"

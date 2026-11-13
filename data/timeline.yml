@@ -1,12 +1,12 @@
 - when: August 2025
   title: Project funded
-  text: Cornell's Center for Data Science for Enterprise & Society and AI Initiative fund the planning project.
+  text: Cornell AI Initiative
 - when: June 9–11, 2026
   title: Thought Summit
   text: Experts from 20 organizations meet at Cornell to launch VETNET.
 - when: October 2026
   title: Whitepaper published
-  text: Our founding whitepaper appears on arXiv with 40 co-authors.
+  text: Our founding whitepaper appears on arXiv with 36 co-authors.
 - when: Next
   title: First datasets
   text: Open CT and radiograph datasets and the first benchmarks.
