@@ -6,7 +6,6 @@ header:
   - {label: News & Events, url: /news/}
   - {label: Join Us, url: /join/}
   - {label: Sponsors, url: /sponsors/}
-  - {label: For Members, url: /members/}
 
 footer_explore:
   - {label: About, url: /about/}
