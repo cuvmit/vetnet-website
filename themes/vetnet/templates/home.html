@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {%- import "_macros.html" as m with context -%}
 {% set stats = data.stats %}
-{% block title %}VETNET | Open data for veterinary AI{% endblock %}
+{% block title %}VETNET | Benchmark datasets for veterinary AI{% endblock %}
 {% block description %}{{ page.summary|striptags }}{% endblock %}
 {% block body_class %}page-home{% endblock %}
 
@@ -10,7 +10,7 @@
   <div class="container hero-grid">
     <div>
       <h1>Shared data to move veterinary AI forward</h1>
-      <p class="lead">VETNET is building an ecosystem of live benchmarks for AI in veterinary medicine: any animal, any disease, any task. Launched at a 2026 Cornell Thought Summit, it brings together universities, industry and regulators to create open, well-documented datasets, starting with CT and radiograph imaging.</p>
+      <p class="lead">VETNET is building an ecosystem of live benchmarks for AI in veterinary medicine: any animal, any disease, any responsible task. Launched at a 2026 Cornell AI Thought Summit, it brings together universities, industry and regulators to create open, well-documented datasets, starting with CT and radiograph imaging.</p>
       <div class="btn-row hero-actions">
         <a class="btn btn--primary" href="{{ SITEURL }}/about/">About VETNET</a>
         <a class="btn btn--outline" href="{{ SITEURL }}/databases/">Browse datasets</a>
@@ -28,7 +28,7 @@
 <section class="section section--compact" aria-label="VETNET at a glance">
   <div class="container">
     <ul class="stats-list">
-      <li><span class="stat-value">{{ stats.collaborators_total }}</span><span class="stat-label">Collaborators</span></li>
+      <li><span class="stat-value">{{ stats.collaborators }}</span><span class="stat-label">Collaborators</span></li>
       <li><span class="stat-value">{{ stats.universities }}</span><span class="stat-label">Partner universities</span></li>
       <li><span class="stat-value">{{ stats.industry_other }}</span><span class="stat-label">Industry &amp; other partners</span></li>
       <li><span class="stat-value">{{ stats.datasets if stats.datasets else '—' }}</span><span class="stat-label">Datasets{% if not stats.datasets %} · first release coming{% endif %}</span></li>

@@ -1,6 +1,6 @@
 # VETNET website
 
-The website for **VETNET**, an open initiative connecting veterinary medicine and data science. VETNET is building live benchmarks for AI in veterinary medicine ("any animal, any disease, any task") and is sponsored by the Cornell AI Initiative.
+The website for **VETNET**, an open initiative connecting veterinary medicine and data science. VETNET is building live benchmarks for AI in veterinary medicine ("any animal, any disease, any responsible task") and is sponsored by the Cornell AI Initiative.
 
 This repository holds the source of the site. It is a static site built with [Pelican](https://getpelican.com), which turns Markdown files, YAML data and templates into plain HTML.
 

@@ -20,7 +20,7 @@
       <h2 id="mission-title">Why VETNET exists</h2>
     </div>
     <div>
-      <p class="mission-lead">VETNET builds an ecosystem of live benchmarks for AI in veterinary medicine — for any animal, any disease, any task.</p>
+      <p class="mission-lead">VETNET builds an ecosystem of live benchmarks for AI in veterinary medicine - for any animal, any disease, any responsible task.</p>
       <p>Veterinary data covers companion animals and food-producing species, comes in many formats, and faces different legal and regulatory barriers than human health data, with no central body to standardize it. VETNET brings veterinary medicine, computer science, ethics and law together to create standardized, high-quality datasets and the benchmarks that let the field measure real progress — for animals, veterinary professionals, One Health and society.</p>
       <ul class="cols cols-3">
         <li><h3>Open by default</h3><p class="muted">Data and benchmarks shared as openly as privacy and ownership allow.</p></li>
@@ -39,7 +39,7 @@
       <li>
         <p class="timeline-when">{{ t.when }}</p>
         <h3>{{ t.title }}</h3>
-        <p>{{ t.text }}{% if t.placeholder %} <span class="placeholder">{{ t.placeholder }}</span>{% endif %}</p>
+        <p>{{ t.text|replace('@COLLABORATORS@', stats.collaborators|string) }}{% if t.placeholder %} <span class="placeholder">{{ t.placeholder }}</span>{% endif %}</p>
       </li>
       {% endfor %}
     </ol>
@@ -56,7 +56,7 @@
       <details class="faq-item">
         <summary>{{ item.question }}</summary>
         <div class="faq-answer">
-          <p>{{ item.answer|replace('@SITEURL@', SITEURL)|replace('@COLLABORATORS@', stats.collaborators_total|string)|replace('@ORGANIZATIONS@', stats.organizations|string)|replace('@WHITEPAPER@', data.site.links.whitepaper)|safe }}{% if item.email_placeholder %} <span class="placeholder">{{ item.email_placeholder }}</span>{% endif %}</p>
+          <p>{{ item.answer|replace('@SITEURL@', SITEURL)|replace('@COLLABORATORS@', stats.collaborators|string)|replace('@ORGANIZATIONS@', stats.organizations|string)|replace('@WHITEPAPER@', data.site.links.whitepaper)|safe }}{% if item.email_placeholder %} <span class="placeholder">{{ item.email_placeholder }}</span>{% endif %}</p>
           {% if item.actions %}
           <div class="btn-row">
             {% for a in item.actions %}
