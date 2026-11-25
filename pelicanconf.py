@@ -12,7 +12,7 @@ ARTICLE_PATHS = ["news"]
 STATIC_PATHS = ["images", "extra"]
 EXTRA_PATH_METADATA = {
     "extra/robots.txt": {"path": "robots.txt"},
-    "extra/favicon.svg": {"path": "favicon.svg"},
+    "extra/favicon.png": {"path": "favicon.png"},
 }
 THEME = "themes/vetnet"
 IGNORE_FILES = [".#*", ".gitkeep"]

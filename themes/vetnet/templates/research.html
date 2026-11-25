@@ -87,7 +87,7 @@
     <h2>Publications by VETNET</h2>
     {% for pub in data.publications %}
     <article class="pub">
-      <p class="pub-meta">{{ pub.type }} · {% if pub.arxiv_id %}arXiv:{{ pub.arxiv_id }} · {% endif %}{{ pub.date_label }}{% if loop.first %} · {{ stats.collaborators_total }} co-authors from {{ stats.organizations }} organizations{% endif %}</p>
+      <p class="pub-meta">{{ pub.type }} · {% if pub.arxiv_id %}arXiv:{{ pub.arxiv_id }} · {% endif %}{{ pub.date_label }}{% if loop.first %} · {{ stats.collaborators }} co-authors from {{ stats.organizations }} organizations{% endif %}</p>
       <h3>{{ pub.title }}</h3>
       <p>{{ pub.summary }} {% if pub.abstract_placeholder %}<span class="placeholder">{{ pub.abstract_placeholder }}</span>{% endif %}</p>
       {% if loop.first %}

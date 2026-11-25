@@ -1,4 +1,5 @@
-# People directory: 4 PIs + 36 collaborators. Drives every people count on the site.
+# People directory. Drives every people count on the site (the collaborator count is
+# the number of role: collaborator entries, so adding or removing one updates every page).
 # Required: name, role (pi|collaborator), title, org, sector (Academia|Industry|Clinical & public)
 # Optional: pi_label, sort_name, author_name, team (mvp|repos|governance|stakeholder),
 #           expertise, bio, linkedin, photo, founding_member (default true), data_donor (default false)
@@ -174,7 +175,7 @@
 - name: Amelia Nelson
   role: collaborator
   title: PhD Student, Food Science & Technology
-  org: Cornell College of Veterinary Medicine
+  org: Cornell University, College of Veterinary Medicine
   sector: Academia
   expertise: Food science and technology.
 - name: Peter-John (PJ) Noble

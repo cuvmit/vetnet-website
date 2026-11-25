@@ -39,7 +39,7 @@
       <li>
         <p class="timeline-when">{{ t.when }}</p>
         <h3>{{ t.title }}</h3>
-        <p>{{ t.text }}{% if t.placeholder %} <span class="placeholder">{{ t.placeholder }}</span>{% endif %}</p>
+        <p>{{ t.text|replace('@COLLABORATORS@', stats.collaborators|string) }}{% if t.placeholder %} <span class="placeholder">{{ t.placeholder }}</span>{% endif %}</p>
       </li>
       {% endfor %}
     </ol>
@@ -56,7 +56,7 @@
       <details class="faq-item">
         <summary>{{ item.question }}</summary>
         <div class="faq-answer">
-          <p>{{ item.answer|replace('@SITEURL@', SITEURL)|replace('@COLLABORATORS@', stats.collaborators_total|string)|replace('@ORGANIZATIONS@', stats.organizations|string)|replace('@WHITEPAPER@', data.site.links.whitepaper)|safe }}{% if item.email_placeholder %} <span class="placeholder">{{ item.email_placeholder }}</span>{% endif %}</p>
+          <p>{{ item.answer|replace('@SITEURL@', SITEURL)|replace('@COLLABORATORS@', stats.collaborators|string)|replace('@ORGANIZATIONS@', stats.organizations|string)|replace('@WHITEPAPER@', data.site.links.whitepaper)|safe }}{% if item.email_placeholder %} <span class="placeholder">{{ item.email_placeholder }}</span>{% endif %}</p>
           {% if item.actions %}
           <div class="btn-row">
             {% for a in item.actions %}

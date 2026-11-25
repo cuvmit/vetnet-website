@@ -158,7 +158,7 @@ def check_css():
 
 
 def check_files():
-    for name in ("index.html", "sitemap.xml", "robots.txt", "favicon.svg"):
+    for name in ("index.html", "sitemap.xml", "robots.txt", "favicon.png"):
         if not (OUTPUT / name).is_file():
             fail("output", f"missing {name}")
     if (OUTPUT / "home").exists():
@@ -184,7 +184,7 @@ def check_home_stats():
     found = re.findall(r'<span class="stat-value">(.*?)</span><span class="stat-label">(.*?)</span>', html)
     values = {re.sub(r"<.*?>", "", label).split(" ·")[0].replace("&amp;", "&"): value for value, label in found}
     expected = {
-        "Collaborators": str(stats["collaborators_total"]),
+        "Collaborators": str(stats["collaborators"]),
         "Partner universities": str(stats["universities"]),
         "Industry & other partners": str(stats["industry_other"]),
         "Datasets": str(stats["datasets"]) if stats["datasets"] else "—",
